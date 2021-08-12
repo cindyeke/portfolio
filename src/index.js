@@ -1,3 +1,3 @@
 import "../public/assets/scss/styles.scss";
 
-console.log("everything works...");
+console.log("everything works well...");
