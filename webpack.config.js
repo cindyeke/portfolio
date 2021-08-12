@@ -11,6 +11,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "build"),
     filename: "js/[name].[contenthash].bundle.js",
+    assetModuleFilename: "img/[hash][ext][query]",
   },
 
   devServer: {
@@ -40,6 +41,10 @@ module.exports = {
           "postcss-loader",
           "sass-loader",
         ],
+      },
+      {
+        test: /\.(ico|png)$/,
+        type: "asset",
       },
     ],
   },

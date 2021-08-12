@@ -1,2 +1,9 @@
 $background-light-theme: #f5f5f5;
+$primary-light-color: #eee9e3;
+$secondary-light-color: #7fd1ae;
+$accent-light-color: #ff8a5f;
+
 $background-dark-theme: #8a1d06;
+
+$nav-height: 15vh;
+$main-height: calc(100vh - #{$nav-height});

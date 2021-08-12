@@ -11,23 +11,47 @@
         content="full-stack, software-developer, software developer, software engineer, portfolio, cv, resume, minimal portfolio, software design">
 
     <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
+
+    <script src="https://use.fontawesome.com/3b978efc20.js"></script>
+
     <title>Cindy Eke | Software Developer</title>
 </head>
 
 <body>
-    <nav>
-        <ul>
-            <li>CV [PDF]</li>
-            <li>LinkedIn Icon</li>
-            <li>Email</li>
-            <li>too bright? <input type="checkbox" name="theme-switch" id="theme-switch"></li>
+    <nav class="nav">
+        <ul class="nav__list">
+            <li class="nav__item">
+                <a href="#" class="nav__link">
+                    <div>CV</div>
+                    <div>[PDF]</div>
+                </a>
+            </li>
+            <li class="nav__item">
+                <a href="#" class="nav__link">
+                    <!-- LINKEDIN -->
+                    <i class="fa fa-linkedin-square nav__icon"></i>
+                </a>
+            </li>
+            <li class="nav__item">
+                <a href="#" class="nav__link">
+                    <!-- EMAIL ME -->
+                    <i class="fa fa-envelope-o nav__icon"></i>
+                </a>
+            </li>
+            <li class="nav__item">
+                <div class="nav__theme-switch-container">
+                    <div class="nav__theme-question">too bright?</div>
+                    <input type="checkbox" class="nav__theme-switch">
+                </div>
+            </li>
         </ul>
     </nav>
-    <section>
-        <h1>Hey! I’m Cindy.
+    <main class="firstpage">
+        <h1 class="firstpage__heading">Hey! I’m Cindy.
             I am a full-stack software developer who builds applications with JavaScript, TypeScript, React, Node.js and
             Java.</h1>
-    </section>
+        <div class="firstpage__direction"></div>
+    </main>
     <section>
         <button>All</button>
         <button>JavaScript</button>

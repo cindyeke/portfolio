@@ -1,5 +1,115 @@
 @use "variables";
+@use "global";
 
 body {
   background: variables.$background-light-theme;
+}
+
+.nav {
+  background-color: variables.$primary-light-color;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: variables.$nav-height;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0px 20px 60px rgba(0, 0, 0, 0.5);
+  padding: 0 1rem;
+
+  &__list {
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+  }
+
+  &__link {
+    color: variables.$secondary-light-color;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  &__item {
+    height: inherit;
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__link:first-child {
+    font-size: 1.2rem;
+  }
+
+  &__icon {
+    font-size: 3rem;
+  }
+
+  &__theme-switch-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__theme-question {
+    color: #ff8a5f;
+    margin-bottom: 0.2rem;
+    font-size: 0.8rem;
+  }
+
+  &__theme-switch {
+    appearance: none;
+    width: 60%;
+    height: 35%;
+    border: 2px solid variables.$secondary-light-color;
+    outline: none;
+    border-radius: 3rem;
+    transition: 0.3s;
+    background-color: variables.$secondary-light-color;
+  }
+
+  &__theme-switch::before {
+    content: "";
+    background: variables.$primary-light-color;
+    width: 4%;
+    height: 15%;
+    border-radius: 50%;
+    position: absolute;
+    margin-left: 1%;
+    margin-top: 0.5%;
+    transition: 0.3s ease;
+  }
+
+  &__theme-switch:checked:before {
+    transform: translateX(170%);
+    background: variables.$primary-light-color;
+  }
+
+  &__theme-switch:checked {
+    border-color: variables.$secondary-light-color;
+  }
+}
+
+.firstpage {
+  background-color: variables.$primary-light-color;
+  color: variables.$accent-light-color;
+  height: variables.$main-height;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__direction {
+    width: 4rem;
+    height: 4rem;
+    margin-top: 2rem;
+    background: variables.$accent-light-color;
+    border-radius: 50%;
+  }
 }
