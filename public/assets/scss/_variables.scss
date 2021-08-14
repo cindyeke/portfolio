@@ -2,8 +2,25 @@ $background-light-theme: #f5f5f5;
 $primary-light-color: #eee9e3;
 $secondary-light-color: #7fd1ae;
 $accent-light-color: #ff8a5f;
+$light-font-color: #474554;
+$dark-shadow: #000;
 
 $background-dark-theme: #8a1d06;
 
 $nav-height: 15vh;
 $main-height: calc(100vh - #{$nav-height});
+
+@mixin flexStyle($flexDirection, $alignProperty: null) {
+  display: flex;
+  justify-content: center;
+
+  @if $flexDirection == "column" {
+    flex-direction: column;
+  } @else {
+    flex-direction: row;
+  }
+
+  @if not($alignProperty == null) {
+    align-items: center;
+  }
+}
