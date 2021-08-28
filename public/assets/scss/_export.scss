@@ -1,0 +1,14 @@
+@use "variables";
+
+:export {
+  backgroundLightTheme: variables.$background-light-theme;
+  primaryLightColor: variables.$primary-light-color;
+  secondaryLightColor: variables.$secondary-light-color;
+  accentLightColor: variables.$accent-light-color;
+  lightFontColor: variables.$light-font-color;
+
+  backgroundDakTheme: variables.$background-dark-theme;
+  primaryDarkColor: variables.$primary-dark-color;
+  secondaryDarkColor: variables.$secondary-dark-color;
+  darkFontColor: variables.$dark-font-color;
+}

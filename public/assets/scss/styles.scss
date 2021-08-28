@@ -1,13 +1,13 @@
 @use "variables";
-@use "global";
+@use "./global";
 
 body {
-  background: variables.$background-light-theme;
+  background: var(--background-theme);
   overflow: hidden;
 }
 
 .nav {
-  background-color: variables.$primary-light-color;
+  background-color: var(--primary-color);
   height: variables.$nav-height;
   width: 100vw;
   position: fixed;
@@ -24,7 +24,7 @@ body {
   }
 
   &__link {
-    color: variables.$secondary-light-color;
+    color: var(--secondary-color);
     text-decoration: none;
     text-align: center;
     font-size: 1rem;
@@ -54,48 +54,83 @@ body {
     color: #ff8a5f;
     margin-bottom: 0.2rem;
     font-size: 0.8rem;
+    // position: absolute;
+    // z-index: 99;
+    // opacity: 1;
+
+    &::before {
+      content: "too bright?";
+      position: absolute;
+      opacity: 1;
+    }
+
+    &::after {
+      content: "too warm?";
+      opacity: 0;
+    }
+
+    &::before,
+    &::after {
+      transition: opacity 1s ease-in-out;
+    }
+
+    // &:hover::before {
+    //   opacity: 0;
+    // }
+
+    // &:hover::after {
+    //   opacity: 1;
+    // }
+
+    &.theme-question-display::before {
+      opacity: 0;
+    }
+
+    &.theme-question-display::after {
+      opacity: 1;
+    }
   }
 
   &__theme-switch {
     appearance: none;
     width: 60%;
     height: 35%;
-    border: 2px solid variables.$secondary-light-color;
+    border: 2px solid var(--secondary-color);
     outline: none;
     border-radius: 3rem;
     transition: 0.3s;
-    background-color: variables.$secondary-light-color;
+    background-color: var(--secondary-color);
   }
 
   &__theme-switch::before {
     content: "";
-    background: variables.$primary-light-color;
+    background: var(--primary-color);
     width: 4%;
     height: 15%;
     border-radius: 50%;
     position: absolute;
     margin-left: 1%;
     margin-top: 0.5%;
-    transition: 0.3s ease;
+    transition: 0.8s ease;
   }
 
   &__theme-switch:checked:before {
     transform: translateX(170%);
-    background: variables.$primary-light-color;
+    background: var(--primary-color);
   }
 
   &__theme-switch:checked {
-    border-color: variables.$secondary-light-color;
+    border-color: var(--secondary-color);
   }
 }
 
 .main {
-  background-color: variables.$primary-light-color;
+  background-color: var(--primary-color);
   height: 100vh;
 
   &__container {
     height: variables.$main-height;
-    color: variables.$accent-light-color;
+    color: var(--accent-color);
     padding: 0 2rem;
     @include variables.flexStyle(column, center);
   }
@@ -108,9 +143,9 @@ body {
     width: 3.5rem;
     height: 3.5rem;
     margin-top: 2rem;
-    background: variables.$accent-light-color;
+    background: var(--accent-color);
     border-radius: 50%;
-    color: variables.$primary-light-color;
+    color: var(--primary-color);
     @include variables.flexStyle(row, center);
     box-shadow: 0px 12px 10px rgba(variables.$dark-shadow, 0.1);
     animation: action 1s infinite alternate;
@@ -137,8 +172,8 @@ body {
 
 .projects {
   height: 100vh;
-  background-color: variables.$background-light-theme;
-  color: variables.$light-font-color;
+  background-color: var(--background-theme);
+  color: var(--light-color);
 
   &__container {
     height: variables.$main-height;
@@ -182,7 +217,7 @@ body {
 
     &.active::after {
       width: 100%;
-      background: variables.$accent-light-color;
+      background: var(--active-nav-color);
     }
   }
 
@@ -203,7 +238,7 @@ body {
   }
 
   &__list::-webkit-scrollbar-thumb {
-    background-color: variables.$accent-light-color;
+    background-color: var(--accent-color);
     border-radius: 9999px;
   }
 }
@@ -221,23 +256,23 @@ body {
     padding: 0.3rem;
     text-transform: uppercase;
     font-size: 0.7rem;
-    color: variables.$secondary-light-color;
+    color: var(--secondary-color);
     outline: none;
     background: transparent;
-    border: 1px solid variables.$secondary-light-color;
+    border: 1px solid var(--secondary-color);
     margin-right: 1rem;
   }
 }
 
 .project:nth-child(odd) {
-  background: rgba(variables.$accent-light-color, 0.1);
-  box-shadow: 0px 0px 50px rgba(variables.$dark-shadow, 0.01);
+  @include variables.backgroundOpacity(#ff8a5f, 0.1);
+  box-shadow: 0px 0px 50px rgba(#000, 0.05);
 }
 
 .project:nth-child(even) {
-  background: rgba(variables.$accent-light-color, 0.01);
-  border: 2px solid rgba(variables.$accent-light-color, 0.1);
-  box-shadow: 0px 0px 0px rgba(variables.$dark-shadow, 0.2);
+  @include variables.backgroundOpacity(#ff8a5f, 0.01);
+  border: 2px solid rgba(#ff8a5f, 0.1);
+  box-shadow: 0px 0px 0px rgba(#000, 0.4);
 }
 
 // Page Flip Functionality

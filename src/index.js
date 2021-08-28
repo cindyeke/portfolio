@@ -1,4 +1,6 @@
 import "../public/assets/scss/styles.scss";
+import "./theme";
+
 import {
   handleEventStart,
   handleEventEnd,
@@ -60,33 +62,3 @@ if (pageBoxInner) {
     });
   }
 }
-
-// Theme Switch Functionality
-const themeSwitchControl1 = document.querySelector(
-  "[data-projects-theme-switch1]"
-);
-
-const themeSwitchControl2 = document.querySelector(
-  "[data-projects-theme-switch2]"
-);
-
-themeSwitchControl1.checked = true;
-themeSwitchControl2.checked = true;
-
-themeSwitchControl1.addEventListener("change", (e) => {
-  if (e.currentTarget.checked == true) {
-    // bright theme here
-  } else {
-    // dark theme here
-  }
-});
-
-// if (themeSwitchControl) {
-//   themeSwitchControl.addEventListener("change", (e) => {
-//     if (e.currentTarget.checked == true) {
-//       console.log("checked");
-//     } else {
-//       console.log("not checked");
-//     }
-//   });
-// }
