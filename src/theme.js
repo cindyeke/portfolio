@@ -13,29 +13,59 @@ themeSwitchControl2.checked = true;
 
 const setTheme = (theme) => (document.documentElement.className = theme);
 
-// Navigation Question DOM
-const navThemeQuestion = document.querySelector("[data-theme-question]");
+const navThemeQuestion = document.querySelectorAll("[data-theme-question]");
+const navThemeQuestionArray = Array.from(navThemeQuestion);
 
-//Main Page DOM
-const mainPage = document.querySelector("[data-main-page]");
-const mainContainer = document.querySelector("[data-main-container]");
-const bodyContainer = document.getElementsByTagName("BODY")[0];
-const directionBtn = document.querySelector("[data-direction-button]");
-const directionIcon = document.querySelector("[data-direction-icon]");
-const mainNavContainer = document.querySelector("[data-nav-container1]");
-const navLink = document.querySelector("[data-nav-link]");
-const navIcon = document.querySelectorAll("i.nav__icon");
+const mainPageNavQuestion = navThemeQuestionArray[0];
+const projectsPageNavQuestion = navThemeQuestionArray[1];
 
-const themeContainer = document.querySelector(
-  "[data-theme-container]"
-).children;
+mainPageNavQuestion.innerText = "too bright?";
+projectsPageNavQuestion.innerText = "too bright?";
+
+// const themeContainer = document.querySelector(
+//   "[data-theme-container]"
+// ).children;
 
 const activeProjectNav = document.querySelector("[data-project-button]");
 
+// Main Page Theme Switch Control
 themeSwitchControl1.addEventListener("change", (e) => {
   if (e.currentTarget.checked == true) {
-    navThemeQuestion.classList.remove("theme-question-display");
+    themeSwitchControl2.checked = true;
+    // mainPageNavQuestion.classList.remove("theme-question-display");
+    // projectsPageNavQuestion.classList.remove("theme-question-display");
+
     setTheme("bright");
+    mainPageNavQuestion.innerText = "too bright?";
+    projectsPageNavQuestion.innerText = "too bright?";
+  } else {
+    themeSwitchControl2.checked = false;
+    // navThemeQuestion.classList.add("theme-question-display");
+    // mainPageNavQuestion.classList.add("theme-question-display");
+    // projectsPageNavQuestion.classList.add("theme-question-display");
+    setTheme("warm");
+    mainPageNavQuestion.innerText = "too warm?";
+    projectsPageNavQuestion.innerText = "too warm?";
+
+    // activeProjectNav.style.setProperty("--active-nav-color", "green");
+  }
+});
+
+// Projects Page Theme Switch Control
+themeSwitchControl2.addEventListener("change", (e) => {
+  if (e.currentTarget.checked == true) {
+    themeSwitchControl1.checked = true;
+    // mainPageNavQuestion.classList.remove("theme-question-display");
+    // projectsPageNavQuestion.classList.remove("theme-question-display");
+
+    // navThemeQuestionArray.forEach((themeQuestion, index) => {
+    //   console.log("hi");
+    // });
+
+    setTheme("bright");
+
+    mainPageNavQuestion.innerText = "too bright?";
+    projectsPageNavQuestion.innerText = "too bright?";
     // mainPage.style.background = "--primary-light-color";
     // mainContainer.style.color = "--accent-light-color";
     // bodyContainer.style.background = "#f5f5f5";
@@ -50,8 +80,13 @@ themeSwitchControl1.addEventListener("change", (e) => {
     // themeSwitchControl1.style.background = "--secondary-light-color";
     // themeSwitchControl1.style.borderColor = "--secondary-light-color";
   } else {
-    navThemeQuestion.classList.add("theme-question-display");
+    themeSwitchControl1.checked = false;
+    // navThemeQuestion.classList.add("theme-question-display");
+    // mainPageNavQuestion.classList.add("theme-question-display");
+    // projectsPageNavQuestion.classList.add("theme-question-display");
     setTheme("warm");
+    mainPageNavQuestion.innerText = "too warm?";
+    projectsPageNavQuestion.innerText = "too warm?";
     // mainPage.style.background = "#c5a586";
     // mainContainer.style.color = "#8a1d06";
     // bodyContainer.style.background = "#8a1d06";

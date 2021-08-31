@@ -6,8 +6,23 @@ body {
   overflow: hidden;
 }
 
+.main_nav {
+  background-color: var(--main-nav-container-color);
+}
+
+.main_nav > .nav__link {
+  color: var(--main-nav-item-color);
+}
+
+.projects_nav {
+  background-color: var(--project-nav-container-color);
+}
+
+.projects_nav > .nav__link {
+  color: var(--project-nav-item-color);
+}
+
 .nav {
-  background-color: var(--primary-color);
   height: variables.$nav-height;
   width: 100vw;
   position: fixed;
@@ -24,7 +39,6 @@ body {
   }
 
   &__link {
-    color: var(--secondary-color);
     text-decoration: none;
     text-align: center;
     font-size: 1rem;
@@ -44,51 +58,105 @@ body {
     font-size: 3rem;
   }
 
+  // &__theme-switch-container {
+  //   height: 100%;
+  //   width: 100%;
+  //   background-color: blue;
+  //   @include variables.flexStyle(column, center);
+  // }
+
+  // &__theme-question {
+  //   color: #ff8a5f;
+  //   font-size: 0.8rem;
+  //   @include variables.flexStyle(row, center);
+
+  //   &::before {
+  //     content: "too bright?";
+  //     opacity: 1;
+  //   }
+
+  //   &::after {
+  //     content: "too warm?";
+  //     opacity: 0;
+  //   }
+
+  //   &::before,
+  //   &::after {
+  //     position: absolute;
+  //     top: 20%;
+  //     // width: inherit;
+  //     // height: inherit;
+  //     transition: opacity 1s ease-in-out;
+  //   }
+
+  //   &.theme-question-display::before {
+  //     opacity: 0;
+  //   }
+
+  //   &.theme-question-display::after {
+  //     opacity: 1;
+  //   }
+  // }
+
+  // &__theme-switch {
+  //   appearance: none;
+  //   width: 60%;
+  //   height: 35%;
+  //   border: 2px solid var(--secondary-color);
+  //   outline: none;
+  //   border-radius: 3rem;
+  //   transition: 0.3s;
+  //   background-color: var(--secondary-color);
+  // }
+
+  // &__theme-switch::before {
+  //   content: "";
+  //   background: var(--primary-color);
+  //   width: 4%;
+  //   height: 15%;
+  //   border-radius: 50%;
+  //   position: absolute;
+  //   margin-left: 1%;
+  //   margin-top: 0.5%;
+  //   transition: 0.8s ease;
+  // }
+
+  // &__theme-switch:checked:before {
+  //   transform: translateX(170%);
+  //   background: var(--primary-color);
+  // }
+
+  // &__theme-switch:checked {
+  //   border-color: var(--secondary-color);
+  // }
+
   &__theme-switch-container {
+    // background-color: blue;
+    // @include variables.flexStyle(column, center);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     height: 100%;
     width: 100%;
-    @include variables.flexStyle(column, center);
-  }
+    //padding-top: 10px;
+    //flex-wrap: wrap;
 
-  &__theme-question {
-    color: #ff8a5f;
-    margin-bottom: 0.2rem;
-    font-size: 0.8rem;
-    // position: absolute;
-    // z-index: 99;
-    // opacity: 1;
-
-    &::before {
-      content: "too bright?";
-      position: absolute;
-      opacity: 1;
-    }
-
-    &::after {
-      content: "too warm?";
-      opacity: 0;
-    }
-
-    &::before,
-    &::after {
-      transition: opacity 1s ease-in-out;
-    }
-
-    // &:hover::before {
-    //   opacity: 0;
-    // }
-
-    // &:hover::after {
+    // &::before {
+    //   content: "too bright?";
     //   opacity: 1;
     // }
 
-    &.theme-question-display::before {
-      opacity: 0;
-    }
+    // &::after {
+    //   content: "too warm?";
+    //   opacity: 0;
+    // }
+  }
 
-    &.theme-question-display::after {
-      opacity: 1;
-    }
+  &__theme-question {
+    margin-bottom: 2%;
+    color: var(--main-theme-question-color);
+    font-size: 0.8rem;
   }
 
   &__theme-switch {
@@ -204,6 +272,7 @@ body {
     border: none;
     font-size: 1rem;
     background-color: transparent;
+    color: var(--light-color);
 
     &::after {
       content: "";
@@ -238,7 +307,7 @@ body {
   }
 
   &__list::-webkit-scrollbar-thumb {
-    background-color: var(--accent-color);
+    background-color: var(--custom-scrollbar-color);
     border-radius: 9999px;
   }
 }
@@ -294,10 +363,6 @@ body {
   }
 }
 
-// .pagebox__inner {
-//   transform: rotateX(180deg);
-// }
-
 .main,
 .projects {
   position: absolute;
@@ -314,5 +379,3 @@ body {
 .nav {
   z-index: 99;
 }
-
-// Page Flip Functionality

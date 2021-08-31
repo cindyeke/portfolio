@@ -6,7 +6,7 @@ let isDown = false;
 let startX;
 let scrollLeft;
 
-export const handleEventStart = (e) => {
+const handleEventStart = (e) => {
   let eventType = e.type;
   let eventPageX;
 
@@ -20,12 +20,12 @@ export const handleEventStart = (e) => {
   scrollLeft = projectNavContainer.scrollLeft;
 };
 
-export const handleEventEnd = () => {
+const handleEventEnd = () => {
   isDown = false;
   projectNavContainer.classList.remove("active");
 };
 
-export const handleEventMove = (e) => {
+const handleEventMove = (e) => {
   let eventType = e.type;
   let eventPageX;
 
@@ -39,3 +39,14 @@ export const handleEventMove = (e) => {
   const walk = x - startX;
   projectNavContainer.scrollLeft = scrollLeft - walk;
 };
+
+if (projectNavContainer) {
+  projectNavContainer.addEventListener("touchstart", handleEventStart);
+  projectNavContainer.addEventListener("touchmove", handleEventMove);
+  projectNavContainer.addEventListener("touchend", handleEventEnd);
+
+  projectNavContainer.addEventListener("mousedown", handleEventStart);
+  projectNavContainer.addEventListener("mousemove", handleEventMove);
+  projectNavContainer.addEventListener("mouseleave", handleEventEnd);
+  projectNavContainer.addEventListener("mouseup", handleEventEnd);
+}

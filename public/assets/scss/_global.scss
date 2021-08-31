@@ -7,7 +7,7 @@
   font-weight: normal;
 }
 
-$accentlightColor: rgb(255, 138, 95);
+//$accentlightColor: rgb(255, 138, 95);
 
 // :root {
 //   --background-light-theme: #f5f5f5;
@@ -24,21 +24,36 @@ $accentlightColor: rgb(255, 138, 95);
 //   --active-nav-color: #ff8a5f;
 // }
 
+// Look into different variables sharing the same value.
+
 :root,
 :root.bright {
   --background-theme: #f5f5f5;
   --primary-color: #eee9e3;
   --secondary-color: #7fd1ae;
-  --accent-color: #{$accentlightColor};
+  --accent-color: #ff8a5f;
   --light-color: #474554;
   --dark-shadow: rgb(0, 0, 0);
   --active-nav-color: #ff8a5f;
+  --main-nav-container-color: #eee9e3;
+  --project-nav-container-color: #f5f5f5;
+  --main-nav-item-color: #7fd1ae;
+  --project-nav-item-color: #7fd1ae;
+  --main-theme-question-color: #ff8a5f;
+  --custom-scrollbar-color: #ff8a5f;
 }
 
 :root.warm {
   --background-theme: #8a1d06;
   --primary-color: #c5a586;
   --secondary-color: #402e32;
-  --accent-color: #{$accentlightColor};
+  --accent-color: #8a1d06;
   --light-color: #f5f5f5;
+  --active-nav-color: #402e32;
+  --main-nav-container-color: #c5a586;
+  --project-nav-container-color: #8a1d06;
+  --main-nav-item-color: #402e32;
+  --project-nav-item-color: #c5a586;
+  --main-theme-question-color: #402e32;
+  --custom-scrollbar-color: #402e32;
 }

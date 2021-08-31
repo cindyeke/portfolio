@@ -1,27 +1,6 @@
 import "../public/assets/scss/styles.scss";
 import "./theme";
-
-import {
-  handleEventStart,
-  handleEventEnd,
-  handleEventMove,
-} from "./drag-to-scroll";
-
-// Drag To Scroll Functionality
-const projectNavContainer = document.querySelector(
-  "[data-project-nav-container]"
-);
-
-if (projectNavContainer) {
-  projectNavContainer.addEventListener("touchstart", handleEventStart);
-  projectNavContainer.addEventListener("touchmove", handleEventMove);
-  projectNavContainer.addEventListener("touchend", handleEventEnd);
-
-  projectNavContainer.addEventListener("mousedown", handleEventStart);
-  projectNavContainer.addEventListener("mousemove", handleEventMove);
-  projectNavContainer.addEventListener("mouseleave", handleEventEnd);
-  projectNavContainer.addEventListener("mouseup", handleEventEnd);
-}
+import "./drag-to-scroll";
 
 // Project Menu Selection Functionality
 const projectButtons = document.querySelectorAll("[data-project-button]");
