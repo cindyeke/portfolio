@@ -7,25 +7,6 @@
   font-weight: normal;
 }
 
-//$accentlightColor: rgb(255, 138, 95);
-
-// :root {
-//   --background-light-theme: #f5f5f5;
-//   --primary-light-color: #eee9e3;
-//   --secondary-light-color: #7fd1ae;
-//   --accent-light-color: #{$accentlightColor};
-//   --light-font-color: #474554;
-//   --dark-shadow: rgb(0, 0, 0);
-
-//   --background-dark-theme: #8a1d06;
-//   --primary-dark-color: #c5a586;
-//   --secondary-dark-color: #402e32;
-//   --dark-font-color: #f5f5f5;
-//   --active-nav-color: #ff8a5f;
-// }
-
-// Look into different variables sharing the same value.
-
 :root,
 :root.bright {
   --background-theme: #f5f5f5;
