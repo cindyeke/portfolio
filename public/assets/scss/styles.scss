@@ -8,18 +8,18 @@ body {
 
 .main_nav {
   background-color: var(--main-nav-container-color);
-}
 
-.main_nav > .nav__link {
-  color: var(--main-nav-item-color);
+  &__link {
+    color: var(--main-nav-item-color);
+  }
 }
 
 .projects_nav {
   background-color: var(--project-nav-container-color);
-}
 
-.projects_nav > .nav__link {
-  color: var(--project-nav-item-color);
+  &__link {
+    color: var(--project-nav-item-color);
+  }
 }
 
 .nav {
@@ -192,6 +192,29 @@ body {
   }
 }
 
+.projects_nav {
+  &__theme-question {
+    color: var(--project-theme-question-color);
+  }
+
+  &__theme-switch {
+    border: 2px solid var(--project-theme-switch-border-color);
+    background-color: var(--project-theme-switch-background-color);
+  }
+
+  &__theme-switch::before {
+    background: var(--project-theme-switch-color);
+  }
+
+  &__theme-switch:checked:before {
+    background: var(--project-theme-switch-color);
+  }
+
+  &__theme-switch:checked {
+    border-color: var(--project-theme-switch-border-color);
+  }
+}
+
 .main {
   background-color: var(--primary-color);
   height: 100vh;
@@ -203,6 +226,14 @@ body {
     @include variables.flexStyle(column, center);
   }
 
+  &__heading {
+    font-size: 1.3rem;
+
+    &--first {
+      font-size: 2.5rem;
+    }
+  }
+
   &__link {
     text-decoration: none;
   }
@@ -210,7 +241,7 @@ body {
   &__direction {
     width: 3.5rem;
     height: 3.5rem;
-    margin-top: 2rem;
+    margin-top: 4rem;
     background: var(--accent-color);
     border-radius: 50%;
     color: var(--primary-color);
@@ -278,6 +309,7 @@ body {
       content: "";
       display: block;
       margin: auto;
+      margin-top: 3px;
       height: 5px;
       width: 0px;
       background: transparent;
@@ -303,7 +335,7 @@ body {
   }
 
   &__list::-webkit-scrollbar-track {
-    background-color: #edf2f7;
+    background-color: transparent;
   }
 
   &__list::-webkit-scrollbar-thumb {
@@ -325,23 +357,25 @@ body {
     padding: 0.3rem;
     text-transform: uppercase;
     font-size: 0.7rem;
-    color: var(--secondary-color);
+    color: var(--projects-btn-color);
     outline: none;
     background: transparent;
-    border: 1px solid var(--secondary-color);
+    border: 1px solid var(--projects-btn-color);
     margin-right: 1rem;
   }
 }
 
 .project:nth-child(odd) {
-  @include variables.backgroundOpacity(#ff8a5f, 0.1);
-  box-shadow: 0px 0px 50px rgba(#000, 0.05);
+  background: var(--projects-odd-background-light);
+  box-shadow: 0px 0px 20px rgba(#000, 0.2);
 }
 
 .project:nth-child(even) {
-  @include variables.backgroundOpacity(#ff8a5f, 0.01);
-  border: 2px solid rgba(#ff8a5f, 0.1);
+  background: var(--projects-even-background-color);
+  border: 2px solid var(--projects-even-background-border);
   box-shadow: 0px 0px 0px rgba(#000, 0.4);
+  box-sizing: border-box;
+  filter: drop-shadow(0px 10px 40px rgba(0, 0, 0, 0.7));
 }
 
 // Page Flip Functionality
