@@ -228,6 +228,7 @@ body {
   }
 
   &__heading {
+    letter-spacing: 1px;
     font-size: 1.3rem;
 
     &--first {
@@ -289,6 +290,7 @@ body {
     will-change: transform;
     user-select: none;
     cursor: pointer;
+    max-height: 15vh;
   }
 
   &__navigation.active {
@@ -325,8 +327,9 @@ body {
 
   &__list {
     padding: 1rem 2rem;
-    max-height: 86%;
+    max-height: 68vh;
     overflow-x: hidden;
+    margin-bottom: 2vh;
     // scrollbar-width: thin;
     // scrollbar-color: #718096 #edf2f7;
   }
@@ -348,6 +351,10 @@ body {
 .project {
   padding: 1rem;
   margin-bottom: 1.5rem;
+
+  &__title {
+    font-weight: bold;
+  }
 
   &__description,
   &__btn {
@@ -379,10 +386,8 @@ body {
   filter: drop-shadow(0px 10px 40px rgba(0, 0, 0, 0.7));
 }
 
-@media only screen and (max-width: 359px) {
+@media screen and (max-width: 359px) and (min-width: 321px) {
   .nav {
-    height: 12vh;
-
     &__link:first-child {
       font-size: 0.9rem;
     }
@@ -392,25 +397,55 @@ body {
     }
 
     &__theme-switch {
-      // appearance: none;
       width: 61%;
       height: 25%;
-      // border: 2px solid var(--secondary-color);
-      // outline: none;
-      // border-radius: 3rem;
-      // transition: 0.3s;
-      // background-color: var(--secondary-color);
     }
 
     &__theme-switch::before {
       width: 3.2%;
-      height: 12.5%;
+      height: 10%;
     }
 
     &__theme-switch:checked:before {
       transform: translateX(225%);
     }
+  }
 
+  .main {
+    &__container {
+      padding: 0 1rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .nav {
+    &__link:first-child {
+      font-size: 1rem;
+    }
+
+    &__icon {
+      font-size: 2.7rem;
+    }
+
+    &__theme-switch {
+      width: 61%;
+      height: 28%;
+    }
+
+    &__theme-switch::before {
+      width: 3.2%;
+      height: 12%;
+      margin-top: 0.25%;
+    }
+
+    &__theme-switch:checked:before {
+      transform: translateX(225%);
+    }
+  }
+
+  .main_nav,
+  .projects_nav {
     &__theme-question {
       font-size: 0.7rem;
     }
@@ -422,9 +457,386 @@ body {
     }
   }
 
-  // .projects {
-  //   &__list {
-  //     max-height: 86%;
-  //   }
-  // }
+  .projects {
+    &__navigation-item {
+      width: 28%;
+    }
+  }
+}
+
+// iPhone X
+@media screen and (max-height: 812px) and (min-height: 810px) {
+  .nav {
+    &__link:first-child {
+      font-size: 1.2rem;
+    }
+
+    &__icon {
+      font-size: 3.5rem;
+    }
+
+    &__theme-switch {
+      width: 61%;
+      height: 25%;
+    }
+
+    &__theme-switch::before {
+      width: 3.5%;
+      height: 12%;
+      margin-top: 0.25%;
+    }
+
+    &__theme-switch:checked:before {
+      transform: translateX(215%);
+    }
+  }
+}
+
+// iPhone 11 & 12 ProMax
+@media screen and (max-height: 926px) and (min-height: 890px) {
+  .nav {
+    &__link:first-child {
+      font-size: 1.5rem;
+    }
+
+    &__icon {
+      font-size: 3.8rem;
+    }
+
+    &__theme-switch {
+      width: 61%;
+      height: 25%;
+    }
+
+    &__theme-switch::before {
+      width: 3.5%;
+      height: 12%;
+      margin-top: 0.25%;
+    }
+
+    &__theme-switch:checked:before {
+      transform: translateX(230%);
+    }
+  }
+
+  .main_nav,
+  .projects_nav {
+    &__theme-question {
+      font-size: 1rem;
+    }
+  }
+
+  .main {
+    &__container {
+      padding: 0 1rem;
+    }
+
+    &__heading {
+      font-size: 1.8rem;
+
+      &--first {
+        font-size: 4rem;
+      }
+    }
+  }
+}
+
+// iPads and Tablets
+@media screen and (max-width: 768px) and (min-width: 700px) {
+  .nav {
+    &__link:first-child {
+      font-size: 1.6rem;
+    }
+
+    &__icon {
+      font-size: 4rem;
+    }
+
+    &__theme-switch {
+      width: 45%;
+      height: 25%;
+    }
+
+    &__theme-switch::before {
+      width: 2.6%;
+      height: 12%;
+      margin-top: 0.22%;
+    }
+
+    &__theme-switch:checked:before {
+      transform: translateX(230%);
+    }
+  }
+
+  .main_nav,
+  .projects_nav {
+    &__theme-question {
+      font-size: 1.1rem;
+    }
+  }
+
+  .main {
+    &__heading {
+      font-size: 1.8rem;
+
+      &--first {
+        font-size: 4rem;
+      }
+    }
+
+    &__direction {
+      width: 5rem;
+      height: 5rem;
+    }
+  }
+
+  .projects {
+    &__navigation-item {
+      margin-right: 0;
+      font-size: 1.5rem;
+    }
+  }
+
+  .project {
+    font-size: 1.3rem;
+
+    &__btn {
+      font-size: 1rem;
+    }
+  }
+}
+
+// Targetting iPad height
+@media screen and (max-height: 800px) and (min-height: 750px) {
+  .main {
+    &__heading {
+      width: 70%;
+      font-size: 2rem !important;
+
+      &--first {
+        font-size: 2.2rem !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 699px) and (min-width: 500px) {
+  .nav {
+    &__link:first-child {
+      font-size: 1.3rem;
+    }
+
+    &__icon {
+      font-size: 3.5rem;
+    }
+
+    &__theme-switch {
+      width: 45%;
+      height: 27.5%;
+    }
+
+    &__theme-switch::before {
+      width: 2.6%;
+      height: 12%;
+      margin-top: 0.22%;
+    }
+
+    &__theme-switch:checked:before {
+      transform: translateX(230%);
+    }
+  }
+
+  .main_nav,
+  .projects_nav {
+    &__theme-question {
+      font-size: 0.9rem;
+    }
+  }
+
+  .main {
+    &__heading {
+      font-size: 1.5rem;
+
+      &--first {
+        font-size: 3rem;
+      }
+    }
+  }
+
+  .projects {
+    &__navigation-item {
+      margin-right: 0;
+      font-size: 1.1rem;
+    }
+  }
+
+  .project {
+    font-size: 1rem;
+  }
+}
+
+// Large Screen
+@media only screen and (min-width: 1024px) {
+  .main {
+    background-color: var(--large-screen-body-background);
+
+    &__container {
+      background-color: var(--primary-color);
+      height: 100vh;
+      -webkit-clip-path: polygon(0% 0%, 100% 0, 100% 70%, 0 100%);
+      clip-path: polygon(0% 0%, 100% 0, 100% 70%, 0 100%);
+      align-items: flex-start;
+    }
+
+    &__heading {
+      width: 70%;
+      font-size: 2.5rem;
+
+      &--first {
+        font-size: 2.5rem;
+      }
+    }
+
+    &__link {
+      text-decoration: none;
+    }
+
+    &__button {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    &__direction {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+
+  .nav {
+    height: 500px;
+    width: 150px;
+    position: absolute;
+    top: 0;
+    right: 5%;
+    @include variables.flexStyle(row);
+    box-shadow: none;
+    padding: 0;
+    z-index: 99;
+    text-align: center;
+    margin-top: 2rem;
+    background-color: blue;
+
+    &__list {
+      height: auto;
+      display: inline;
+    }
+
+    &__item {
+      height: auto;
+      width: auto;
+      margin-top: 3rem;
+      //@include variables.flexStyle(row);
+    }
+
+    &__link:first-child {
+      font-size: 1.5rem;
+    }
+
+    &__icon {
+      font-size: 4.5rem;
+    }
+
+    &__theme-question {
+      margin-bottom: 2.5%;
+      font-size: 1.2rem;
+    }
+
+    &__theme-switch {
+      width: 80%;
+      height: 28px;
+      border-radius: 2rem;
+    }
+
+    &__theme-switch::before {
+      width: 22%;
+      height: 3.8%;
+      margin-top: 2px;
+      margin-left: 5px;
+    }
+
+    &__theme-switch:checked:before {
+      transform: translateX(200%);
+    }
+
+    // Nav Dropdown Here
+    &__menu-dropdown {
+      display: none;
+
+      &-toggle {
+        display: block;
+        width: 100%;
+        height: 50px;
+        cursor: pointer;
+
+        &-bars {
+          position: relative;
+          top: 0;
+          height: 12px;
+          margin-bottom: 12px;
+          transition: 0.3s ease transform, 0.3s ease top, 0.3s ease width,
+            0.3s ease right;
+          border-radius: 2px;
+        }
+
+        &-bars:first-child {
+          transform-origin: 0;
+        }
+
+        &-bars:last-child {
+          margin-bottom: 0;
+          transform-origin: 60px;
+        }
+
+        &-bars:nth-child(2) {
+          right: 0;
+          width: 100%;
+        }
+      }
+
+      &-toggle::before {
+        content: "";
+        transition: 1.2s cubic-bezier(0, 0.96, 1, 0.02);
+      }
+    }
+
+    &__menu-dropdown:checked + label div:first-child {
+      top: -6px;
+      transform: rotateZ(45deg);
+    }
+
+    &__menu-dropdown:checked + label div:last-child {
+      top: 6px;
+      transform: rotateZ(45deg);
+    }
+
+    &__menu-dropdown:checked + label div:nth-child(2) {
+      width: 140%;
+      top: 4px;
+      right: 13px;
+      transform: rotateZ(-42deg);
+    }
+  }
+
+  .main_nav {
+    &__menu-dropdown-toggle-bars {
+      background-color: var(--main-nav-item-color);
+    }
+  }
+
+  .projects_nav {
+    &__menu-dropdown-toggle-bars {
+      background-color: var(--project-nav-item-color);
+    }
+  }
 }
