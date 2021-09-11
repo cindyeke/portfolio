@@ -1,20 +1,151 @@
-// const mainPageNav = document.querySelector("[data-nav-container1]");
-// const projectsPageNav = document.querySelector("[data-nav-container2]");
+const mainNav = document.querySelector("[data-nav-container1]");
+const mainNavDropdownContainer = document.querySelector(
+  "[data-nav-dropdown-container1]"
+);
 const mainNavDropdown = document.querySelector("[data-nav-dropdown-1]");
 const projectsNavDropdown = document.querySelector("[data-nav-dropdown-2]");
-const navItems = document.querySelectorAll("[data-nav-link-1]");
-const navItemsArray = Array.from(navItems);
+const mainNavItems = document.querySelectorAll("[data-nav-link-1]");
+const mainNavItemsArray = Array.from(mainNavItems);
 
-// navDropdown.addEventListener("change", () => {
-//   if (navDropdown.checked == true) {
-//     console.log("checked");
-//   } else {
-//     console.log("not checked");
-//   }
-// });
+const mainNavToggleContainer = document.querySelector(
+  "[data-nav-dropdown-container1]"
+);
+const mainNavToggle = document.querySelector("[data-nav__toggle1]");
 
-// if (screen.width > 1000) {
-//   navItemsArray.forEach((item) => {
-//     item.style.display = "none";
-//   });
-// }
+const navThemeContainer = document.querySelector("[data-theme-container]");
+
+let toggleState = true;
+
+const navList = document.querySelector("[data-nav-list]");
+
+// Create Nav Item
+const createNavItems = () => {
+  // first nav item
+  const content2 = document.createTextNode("CV");
+  const content1 = document.createTextNode("[PDF]");
+  const navLinkDiv2 = document.createElement("div");
+  const navLinkDiv1 = document.createElement("div");
+  const firstnavLink = document.createElement("a");
+  const firstNavListItem = document.createElement("li");
+
+  firstNavListItem.className = "nav__item nav__item-toggle open";
+  firstnavLink.className = "nav__link main_nav__link";
+
+  navLinkDiv2.appendChild(content2);
+  navLinkDiv1.appendChild(content1);
+  firstnavLink.appendChild(navLinkDiv2);
+  firstnavLink.appendChild(navLinkDiv1);
+  firstNavListItem.appendChild(firstnavLink);
+
+  // Second Nav Item
+  const secondIconContainer = document.createElement("i");
+  const secondNavLink = document.createElement("a");
+  const secondNavListItem = document.createElement("li");
+
+  secondIconContainer.className = "fa fa-linkedin-square nav__icon";
+  secondNavLink.className = "nav__link main_nav__link";
+  secondNavListItem.className = "nav__item nav__item-toggle open";
+
+  secondNavLink.appendChild(secondIconContainer);
+  secondNavListItem.appendChild(secondNavLink);
+
+  // Third Nav Item
+  const thirdIconContainer = document.createElement("i");
+  const thirdNavLink = document.createElement("a");
+  const thirdNavListItem = document.createElement("li");
+
+  thirdIconContainer.className = "fa fa-envelope-o nav__icon";
+  thirdNavLink.className = "nav__link main_nav__link";
+  thirdNavListItem.className = "nav__item nav__item-toggle open";
+
+  thirdNavLink.appendChild(thirdIconContainer);
+  thirdNavListItem.appendChild(thirdNavLink);
+
+  navList.insertBefore(firstNavListItem, navList.children[0]);
+  navList.insertBefore(secondNavListItem, navList.children[1]);
+  navList.insertBefore(thirdNavListItem, navList.children[2]);
+
+  return [firstNavListItem, secondNavListItem, thirdNavListItem];
+};
+
+const requestAnimationFrame = (navListArr) => {
+  navThemeContainer.classList.add("expand");
+
+  setTimeout(() => {
+    navListArr[0].classList.remove("open");
+  }, [500]);
+
+  setTimeout(() => {
+    navListArr[1].classList.remove("open");
+  }, [1000]);
+
+  setTimeout(() => {
+    navListArr[2].classList.remove("open");
+  }, [1500]);
+};
+
+// Remove Nav Items
+const removeNavItems = () => {
+  navThemeContainer.classList.remove("expand");
+
+  setTimeout(() => {
+    navList.children[2].classList.add("open");
+  }, [200]);
+
+  setTimeout(() => {
+    navList.children[1].classList.add("open");
+  }, [700]);
+
+  setTimeout(() => {
+    navList.children[0].classList.add("open");
+  }, [1200]);
+
+  setTimeout(() => {
+    navList.removeChild(navList.children[0]);
+    navList.removeChild(navList.children[0]);
+    navList.removeChild(navList.children[0]);
+  }, [3000]);
+};
+
+const transitionToXIcon = () => {
+  mainNavToggle.classList.add("fa-spin");
+  mainNavToggle.classList.add("ease-display");
+  setTimeout(() => {
+    mainNavToggle.classList.remove("ease-display");
+    mainNavToggle.classList.remove("fa-bars");
+    mainNavToggle.classList.add("fa-times");
+    mainNavToggle.classList.remove("fa-spin");
+  }, [500]);
+};
+
+const transitionToBarsIcon = () => {
+  mainNavToggle.classList.add("fa-counter-spin");
+  mainNavToggle.classList.add("ease-display");
+  setTimeout(() => {
+    mainNavToggle.classList.remove("ease-display");
+    mainNavToggle.classList.remove("fa-times");
+    mainNavToggle.classList.add("fa-bars");
+    mainNavToggle.classList.remove("fa-counter-spin");
+  }, [500]);
+};
+
+if (screen.width < 1000) {
+  mainNavDropdownContainer.style.display = "none";
+  createNavItems();
+}
+
+// Toggle Nav
+if (mainNavToggleContainer) {
+  mainNavToggleContainer.addEventListener("click", () => {
+    if (toggleState) {
+      transitionToXIcon();
+      let navListArr = createNavItems();
+      requestAnimationFrame(navListArr);
+      toggleState = !toggleState;
+    } else {
+      transitionToBarsIcon();
+      removeNavItems();
+      toggleState = !toggleState;
+    }
+  });
+}

@@ -59,78 +59,6 @@ body {
     font-size: 3rem;
   }
 
-  // &__theme-switch-container {
-  //   height: 100%;
-  //   width: 100%;
-  //   background-color: blue;
-  //   @include variables.flexStyle(column, center);
-  // }
-
-  // &__theme-question {
-  //   color: #ff8a5f;
-  //   font-size: 0.8rem;
-  //   @include variables.flexStyle(row, center);
-
-  //   &::before {
-  //     content: "too bright?";
-  //     opacity: 1;
-  //   }
-
-  //   &::after {
-  //     content: "too warm?";
-  //     opacity: 0;
-  //   }
-
-  //   &::before,
-  //   &::after {
-  //     position: absolute;
-  //     top: 20%;
-  //     // width: inherit;
-  //     // height: inherit;
-  //     transition: opacity 1s ease-in-out;
-  //   }
-
-  //   &.theme-question-display::before {
-  //     opacity: 0;
-  //   }
-
-  //   &.theme-question-display::after {
-  //     opacity: 1;
-  //   }
-  // }
-
-  // &__theme-switch {
-  //   appearance: none;
-  //   width: 60%;
-  //   height: 35%;
-  //   border: 2px solid var(--secondary-color);
-  //   outline: none;
-  //   border-radius: 3rem;
-  //   transition: 0.3s;
-  //   background-color: var(--secondary-color);
-  // }
-
-  // &__theme-switch::before {
-  //   content: "";
-  //   background: var(--primary-color);
-  //   width: 4%;
-  //   height: 15%;
-  //   border-radius: 50%;
-  //   position: absolute;
-  //   margin-left: 1%;
-  //   margin-top: 0.5%;
-  //   transition: 0.8s ease;
-  // }
-
-  // &__theme-switch:checked:before {
-  //   transform: translateX(170%);
-  //   background: var(--primary-color);
-  // }
-
-  // &__theme-switch:checked {
-  //   border-color: var(--secondary-color);
-  // }
-
   &__theme-switch-container {
     // background-color: blue;
     // @include variables.flexStyle(column, center);
@@ -140,18 +68,6 @@ body {
     flex-direction: column;
     height: 100%;
     width: 100%;
-    //padding-top: 10px;
-    //flex-wrap: wrap;
-
-    // &::before {
-    //   content: "too bright?";
-    //   opacity: 1;
-    // }
-
-    // &::after {
-    //   content: "too warm?";
-    //   opacity: 0;
-    // }
   }
 
   &__theme-question {
@@ -675,6 +591,15 @@ body {
   }
 }
 
+// Small Screen
+@media only screen and (max-width: 1023px) {
+  .nav {
+    &__menu-dropdown {
+      display: none;
+    }
+  }
+}
+
 // Large Screen
 @media only screen and (min-width: 1024px) {
   .main {
@@ -719,124 +644,132 @@ body {
     position: absolute;
     top: 0;
     right: 5%;
-    @include variables.flexStyle(row);
     box-shadow: none;
-    padding: 0;
-    z-index: 99;
-    text-align: center;
     margin-top: 2rem;
-    background-color: blue;
+    justify-content: flex-start;
 
     &__list {
-      height: auto;
-      display: inline;
+      display: flex;
+      flex-direction: column;
+      //justify-content: center;
+      align-items: center;
     }
 
     &__item {
-      height: auto;
-      width: auto;
       margin-top: 3rem;
-      //@include variables.flexStyle(row);
+      width: 100%;
     }
 
-    &__link:first-child {
-      font-size: 1.5rem;
+    &__link {
+      font-size: 1.6rem !important;
     }
 
     &__icon {
-      font-size: 4.5rem;
+      font-size: 4rem;
+    }
+
+    &__item-toggle {
+      transition: opacity 1s;
+
+      &.open {
+        opacity: 0;
+      }
+    }
+
+    &__theme-switch-container {
+      height: 100px;
+      width: auto;
+      position: absolute;
+      top: 15%;
+      //z-index: -99;
+      transition: top 2.4s ease-in-out;
+
+      &.expand {
+        top: 80%;
+      }
     }
 
     &__theme-question {
-      margin-bottom: 2.5%;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
     }
 
     &__theme-switch {
-      width: 80%;
+      width: 70%;
       height: 28px;
-      border-radius: 2rem;
     }
 
     &__theme-switch::before {
-      width: 22%;
-      height: 3.8%;
+      width: 18%;
+      height: 18%;
       margin-top: 2px;
-      margin-left: 5px;
+      margin-left: 6px;
     }
 
     &__theme-switch:checked:before {
       transform: translateX(200%);
     }
-
-    // Nav Dropdown Here
-    &__menu-dropdown {
-      display: none;
-
-      &-toggle {
-        display: block;
-        width: 100%;
-        height: 50px;
-        cursor: pointer;
-
-        &-bars {
-          position: relative;
-          top: 0;
-          height: 12px;
-          margin-bottom: 12px;
-          transition: 0.3s ease transform, 0.3s ease top, 0.3s ease width,
-            0.3s ease right;
-          border-radius: 2px;
-        }
-
-        &-bars:first-child {
-          transform-origin: 0;
-        }
-
-        &-bars:last-child {
-          margin-bottom: 0;
-          transform-origin: 60px;
-        }
-
-        &-bars:nth-child(2) {
-          right: 0;
-          width: 100%;
-        }
-      }
-
-      &-toggle::before {
-        content: "";
-        transition: 1.2s cubic-bezier(0, 0.96, 1, 0.02);
-      }
-    }
-
-    &__menu-dropdown:checked + label div:first-child {
-      top: -6px;
-      transform: rotateZ(45deg);
-    }
-
-    &__menu-dropdown:checked + label div:last-child {
-      top: 6px;
-      transform: rotateZ(45deg);
-    }
-
-    &__menu-dropdown:checked + label div:nth-child(2) {
-      width: 140%;
-      top: 4px;
-      right: 13px;
-      transform: rotateZ(-42deg);
-    }
   }
 
   .main_nav {
-    &__menu-dropdown-toggle-bars {
-      background-color: var(--main-nav-item-color);
+    &__toggle-container {
+      margin: 0 auto;
+    }
+
+    &__toggle {
+      font-size: 3.5rem;
+      color: var(--secondary-color);
+      transition: opacity 1s;
+
+      &.ease-display {
+        opacity: 0;
+      }
     }
   }
 
-  .projects_nav {
-    &__menu-dropdown-toggle-bars {
-      background-color: var(--project-nav-item-color);
+  .fa-counter-spin {
+    -webkit-animation: spin-counter 2s infinite linear;
+    -moz-animation: spin-counter 2s infinite linear;
+    -o-animation: spin-counter 2s infinite linear;
+    animation: spin-counter 2s infinite linear;
+  }
+  @-moz-keyframes spin-counter {
+    0% {
+      -moz-transform: rotate(359deg);
+    }
+    100% {
+      -moz-transform: rotate(0deg);
+    }
+  }
+  @-webkit-keyframes spin-counter {
+    0% {
+      -webkit-transform: rotate(359deg);
+    }
+    100% {
+      -webkit-transform: rotate(0deg);
+    }
+  }
+  @-o-keyframes spin-counter {
+    0% {
+      -o-transform: rotate(359deg);
+    }
+    100% {
+      -o-transform: rotate(0deg);
+    }
+  }
+  @-ms-keyframes spin-counter {
+    0% {
+      -ms-transform: rotate(359deg);
+    }
+    100% {
+      -ms-transform: rotate(0deg);
+    }
+  }
+  @keyframes spin-counter {
+    0% {
+      transform: rotate(359deg);
+    }
+    100% {
+      transform: rotate(0deg);
     }
   }
 }
