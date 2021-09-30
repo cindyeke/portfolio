@@ -1,12 +1,10 @@
-const projectNavContainer = document.querySelector(
-  "[data-project-nav-container]"
-);
+const projectContainers = document.querySelectorAll("[data-project-list]");
 
 let isDown = false;
 let startX;
 let scrollLeft;
 
-const handleEventStart = (e) => {
+const handleEventStart = (e, container) => {
   let eventType = e.type;
   let eventPageX;
 
@@ -15,17 +13,17 @@ const handleEventStart = (e) => {
     : (eventPageX = e.pageX);
 
   isDown = true;
-  projectNavContainer.classList.add("active");
-  startX = eventPageX - projectNavContainer.offsetLeft;
-  scrollLeft = projectNavContainer.scrollLeft;
+  container.classList.add("active");
+  startX = eventPageX - container.offsetLeft;
+  scrollLeft = container.scrollLeft;
 };
 
-const handleEventEnd = () => {
+const handleEventEnd = (container) => {
   isDown = false;
-  projectNavContainer.classList.remove("active");
+  container.classList.remove("active");
 };
 
-const handleEventMove = (e) => {
+const handleEventMove = (e, container) => {
   let eventType = e.type;
   let eventPageX;
 
@@ -35,18 +33,34 @@ const handleEventMove = (e) => {
 
   if (!isDown) return;
   e.preventDefault();
-  const x = eventPageX - projectNavContainer.offsetLeft;
+  const x = eventPageX - container.offsetLeft;
   const walk = x - startX;
-  projectNavContainer.scrollLeft = scrollLeft - walk;
+  container.scrollLeft = scrollLeft - walk;
 };
 
-if (projectNavContainer) {
-  projectNavContainer.addEventListener("touchstart", handleEventStart);
-  projectNavContainer.addEventListener("touchmove", handleEventMove);
-  projectNavContainer.addEventListener("touchend", handleEventEnd);
+if (projectContainers) {
+  projectContainers.forEach((container) => {
+    container.addEventListener("touchstart", (e) => {
+      handleEventStart(e, container);
+    });
+    container.addEventListener("touchmove", (e) => {
+      handleEventMove(e, container);
+    });
+    container.addEventListener("touchend", () => {
+      handleEventEnd(container);
+    });
 
-  projectNavContainer.addEventListener("mousedown", handleEventStart);
-  projectNavContainer.addEventListener("mousemove", handleEventMove);
-  projectNavContainer.addEventListener("mouseleave", handleEventEnd);
-  projectNavContainer.addEventListener("mouseup", handleEventEnd);
+    container.addEventListener("mousedown", (e) => {
+      handleEventStart(e, container);
+    });
+    container.addEventListener("mousemove", (e) => {
+      handleEventMove(e, container);
+    });
+    container.addEventListener("mouseleave", () => {
+      handleEventEnd(container);
+    });
+    container.addEventListener("mouseup", () => {
+      handleEventEnd(container);
+    });
+  });
 }

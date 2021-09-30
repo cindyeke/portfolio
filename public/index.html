@@ -18,131 +18,121 @@
 </head>
 
 <body>
-    <div class="pagebox" data-pagebox>
-        <div class="pagebox__inner" data-pagebox-inner>
+    <nav class="nav">
+        <ul class="nav__list">
+            <li class="nav__item" data-nav-item><a href="#" class="nav__link">about</a></li>
+            <li class="nav__item" data-nav-item>
+                <a href="#projects" class="nav__link">projects</a>
+            </li>
+            <li class="nav__item">
+                <input class="nav__theme-toggle" type="checkbox" id="theme-switch" data-nav-theme-toggle>
+                <label class="nav__toggle" for="theme-switch" data-checked="&#xf185;" data-unchecked="&#xf186;"></label>
+            </li>
+        </ul>
+    </nav>
 
-            <main class="main" data-main-page>
-                <div class="main__container" data-main-container>
-                    <div class="main__heading">
-                        <p class="main__heading--first">Hey! I’m Cindy.</p><br>
+    <main class="main" data-main-page>
+        <div class="main__layer">
+            <div class="main__container" data-main-container>
+                <div class="main__heading">
+                    <div class="main__heading-border">
+                        <p class="main__first">Hey! I’m Cindy.</p><br>
                         <p>
-                            I am a full-stack software developer who builds applications with JavaScript, TypeScript,
-                            React,
-                            Node.js and Java.
+                            I am a full stack software engineer currently based in Lagos, Nigeria.
                         </p><br>
-                        <p>Recently I have developed interest more in frontend and I'm currently
-                            focusing on
-                            being a better frontend developer.</p>
-                    </div>
-                    <div class="main__button">
-                        <a href="#" class="main__link">
-                            <button class="main__direction" data-direction-button>
-                                <i class="fa fa-2x fa-caret-down" data-direction-icon></i>
-                            </button>
-                        </a>
+                        <p>I build mobile, web and desktop applications and I am really passionate about front-end.</p>
+                        <br><br>
+                        <p class="main__resume">Download <a href="#" class="main__resume-link">my resume</a></p>
+                        <br>
+                        <ul class="main__contacts">
+                            <li class="main__contacts-item">
+                                <a href="#" class="main__contacts-link">
+                                    <i class="fa fa-linkedin main__contacts-icon"></i>
+                                </a>
+                            </li>
+                            <li class="main__contacts-item">
+                                <a href="#" class="main__contacts-link">
+                                    <i class="fa fa-envelope main__contacts-icon"></i>
+                                </a>
+                            </li>
+                            <li class="main__contacts-item">
+                                <a href="#" class="main__contacts-link">
+                                    <i class="fa fa-github main__contacts-icon"></i>
+                                </a>
+                            </li>
+
+                        </ul>
                     </div>
                 </div>
+            </div>
+        </div>
+    </main>
 
-                <nav class="nav main_nav" data-nav-container1>
-                    <div class="main_nav__toggle-container" data-nav-dropdown-container1>
-                        <i class="fa fa-bars main_nav__toggle" data-nav__toggle1></i>
-                    </div>
-                    <ul class="nav__list" data-nav-list>
-                        <li class="nav__item">
-                            <div class="nav__theme-switch-container" data-theme-container>
-                                <div class="nav__theme-question main_nav__theme-question" data-theme-question></div>
-                                <input type="checkbox" class="nav__theme-switch" data-projects-theme-switch1>
-                            </div>
-                        </li>
-                    </ul>
-                </nav>
-            </main>
+    <section id="projects" class="projects" data-projects-container>
+        <div class="projects__container">
+            <div class="projects__heading">
+                <h2 class="projects__heading-title">Projects</h2>
+                <p class="projects__heading-description">Swipe or drag below each category to view projects.</p>
+            </div>
 
-            <section class="projects" data-projects-container>
-                <div class="projects__container">
-                    <div class="projects__navigation" data-project-nav-container>
-                        <button class="projects__navigation-item" data-project-button>All</button>
-                        <button class="projects__navigation-item" data-project-button>JavaScript</button>
-                        <button class="projects__navigation-item" data-project-button>React</button>
-                        <button class="projects__navigation-item" data-project-button>Node.js</button>
-                        <button class="projects__navigation-item" data-project-button>Java</button>
-                    </div>
 
-                    <div class="projects__list" data-project-list>
-                        <article class="project" data-project>
-                            <div class="project__title">My Portfolio</div>
-                            <div class="project__description">A high-performance, responsive website that is
-                                user-friendly.
-                            </div>
-                            <button class="project__btn">github repo</button>
-                        </article>
-
+            <div class="projects__list">
+                <div class="projects__category">
+                    <h3 class="projects__category-title">JavaScript</h3>
+                    <div class="projects__category-list" data-project-list>
                         <article class="project" data-project>
                             <div class="project__title">Hangout & Chillz 1</div>
                             <div class="project__description">A responsive, user-friendly website that ...</div>
-                            <button class="project__btn">github repo</button>
-                            <button class="project__btn">visit website</button>
-                        </article>
-
-                        <article class="project" data-project>
-                            <div class="project__title">Hangout & Chillz 2</div>
-                            <div class="project__description">A responsive, user-friendly website that ...</div>
-                            <button class="project__btn">github repo</button>
-                            <button class="project__btn">visit website</button>
-                        </article>
-
-                        <article class="project" data-project>
-                            <div class="project__title">Hangout & Chillz</div>
-                            <div class="project__description">A responsive, user-friendly website that ...</div>
-                            <button class="project__btn">github repo</button>
+                            <button class="project__btn">code</button>
                             <button class="project__btn">visit website</button>
                         </article>
                     </div>
                 </div>
 
-                <nav class="nav projects_nav" data-nav-container2>
-                    <ul class="nav__list">
-                        <div>
-                            <input type="checkbox" id="nav__menu-dropdown"
-                                class="nav__menu-dropdown projects_nav__menu-dropdown" data-nav-dropdown-2>
-                            <label for="nav__menu-dropdown" class="nav__menu-dropdown-toggle">
-                                <div class="nav__menu-dropdown-toggle-bars projects_nav__menu-dropdown-toggle-bars">
-                                </div>
-                                <div class="nav__menu-dropdown-toggle-bars projects_nav__menu-dropdown-toggle-bars">
-                                </div>
-                                <div class="nav__menu-dropdown-toggle-bars projects_nav__menu-dropdown-toggle-bars">
-                                </div>
-                            </label>
-                        </div>
-                        <li class="nav__item">
-                            <a href="#" class="nav__link projects_nav__link">
-                                <div>CV</div>
-                                <div>[PDF]</div>
-                            </a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#" class="nav__link projects_nav__link">
-                                <i class="fa fa-linkedin-square nav__icon"></i>
-                            </a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#" class="nav__link projects_nav__link">
-                                <i class="fa fa-envelope-o nav__icon"></i>
-                            </a>
-                        </li>
-                        <li class="nav__item">
-                            <div class="nav__theme-switch-container">
-                                <div class="nav__theme-question projects_nav__theme-question" data-theme-question></div>
-                                <input type="checkbox" class="nav__theme-switch projects_nav__theme-switch"
-                                    data-projects-theme-switch2>
-                            </div>
-                        </li>
-                    </ul>
-                </nav>
-            </section>
+                <div class="projects__category">
+                    <h3 class="projects__category-title">React JS</h3>
+                    <div class="projects__category-list" data-project-list>
+                        <article class="project" data-project>
+                            <div class="project__title">Hangout & Chillz 1</div>
+                            <div class="project__description">A responsive, user-friendly website that ...</div>
+                            <button class="project__btn">code</button>
+                            <button class="project__btn">visit website</button>
+                        </article>
+                        <article class="project" data-project>
+                            <div class="project__title">Hangout & Chillz 2</div>
+                            <div class="project__description">A responsive, user-friendly website that ...</div>
+                            <button class="project__btn">code</button>
+                            <button class="project__btn">visit website</button>
+                        </article>
+                        <article class="project" data-project>
+                            <div class="project__title">Hangout & Chillz 3</div>
+                            <div class="project__description">A responsive, user-friendly website that ...</div>
+                            <button class="project__btn">code</button>
+                            <button class="project__btn">visit website</button>
+                        </article>
+                    </div>
+                </div>
 
+                <div class="projects__category">
+                    <h3 class="projects__category-title">Java</h3>
+                    <div class="projects__category-list" data-project-list>
+                        <article class="project" data-project>
+                            <div class="project__title">Hangout & Chillz 1</div>
+                            <div class="project__description">A responsive, user-friendly website that ...</div>
+                            <button class="project__btn">code</button>
+                            <button class="project__btn">visit website</button>
+                        </article>
+                        <article class="project" data-project>
+                            <div class="project__title">Hangout & Chillz 2</div>
+                            <div class="project__description">A responsive, user-friendly website that ...</div>
+                            <button class="project__btn">code</button>
+                            <button class="project__btn">visit website</button>
+                        </article>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 </body>
 
 </html>
