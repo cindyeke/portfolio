@@ -185,31 +185,131 @@
 //   });
 // }
 
-// find a cleaner way to do this
+// NEW HERE
 
-const navItem = document.querySelectorAll("[data-nav-item]");
-const navLink = document.querySelectorAll(".nav__link");
+// Activate Nav
 
-navItem[0].classList.add("selected");
+// const HOME = "home";
+// const PROJECTS = "projects";
 
-navItem[0].addEventListener("click", () => {
-  navItem[0].classList.add("selected");
-  navItem[1].classList.remove("selected");
-});
+// const navItem = document.querySelectorAll("[data-nav-item]");
+// const navLink = document.querySelectorAll(".nav__link");
 
-navItem[1].addEventListener("click", () => {
-  navItem[1].classList.add("selected");
-  navItem[0].classList.remove("selected");
-});
+// const customizeActiveNav = (navigation) => {
+//   if (navigation === "home") {
+//     navItem[0].classList.add("selected");
+//     navItem[1].classList.remove("selected");
+//     navLink[0].classList.add("selected");
+//     navLink[1].classList.remove("selected");
+//   } else {
+//     navItem[1].classList.add("selected");
+//     navItem[0].classList.remove("selected");
+//     navLink[1].classList.add("selected");
+//     navLink[0].classList.remove("selected");
+//   }
+// };
 
-navLink[0].classList.add("selected");
+// const getUrlHashToCustomizeNav = () => {
+//   let url = window.location.href;
+//   let hash = url.split("#")[1];
+//   !hash ? customizeActiveNav(HOME) : customizeActiveNav(PROJECTS);
+// };
 
-navLink[0].addEventListener("click", () => {
-  navLink[0].classList.add("selected");
-  navLink[1].classList.remove("selected");
-});
+// navItem[0].classList.add("selected");
+// navLink[0].classList.add("selected");
 
-navLink[1].addEventListener("click", () => {
-  navLink[1].classList.add("selected");
-  navLink[0].classList.remove("selected");
+// getUrlHashToCustomizeNav();
+
+// window.addEventListener("hashchange", () => {
+//   getUrlHashToCustomizeNav();
+// });
+
+// Create Nav for small and large devices
+const navList = document.querySelector("[data-nav-list]");
+const navToggle = document.querySelector("[data-nav-toggle]");
+const navToggleElement = document.querySelector(".fa");
+
+const createNavItems = () => {
+  // Second Nav Item
+  const secondNavListItemText = document.createTextNode("about");
+  const secondNavLink = document.createElement("a");
+  const secondNavListItem = document.createElement("li");
+
+  secondNavListItem.className = "nav__item";
+  secondNavLink.className = "nav__link";
+
+  secondNavLink.appendChild(secondNavListItemText);
+  secondNavListItem.appendChild(secondNavLink);
+
+  // Third Nav Item
+  const thirdNavListItemText = document.createTextNode("projects");
+  const thirdNavListItem = document.createElement("li");
+  let thirdNavLink = document.createElement("a");
+
+  thirdNavListItem.className = "nav__item";
+  thirdNavLink.className = "nav__link";
+
+  thirdNavLink.appendChild(thirdNavListItemText);
+  thirdNavListItem.appendChild(thirdNavLink);
+
+  navList.insertBefore(secondNavListItem, navList.children[1]);
+  navList.insertBefore(thirdNavListItem, navList.children[2]);
+};
+
+// Display Nav only on small screens
+if (screen.width < 1008) {
+  navToggle.style.display = "none";
+  createNavItems();
+}
+
+//Toggle Nav Function
+
+// const toggleNav = (page) => {
+//   if(){
+//     transitionToXIcon();
+//     let navListArr = createNavItems(page);
+//     requestAnimationFrame(navListArr);
+//     toggleState = !toggleState;
+//   } else {
+//     transitionToBarsIcon();
+//     removeNavItems(page);
+//     toggleState = !toggleState;
+//   }
+// };
+
+const transitionToXIcon = () => {
+  navToggleElement.classList.add("fa-spin");
+  navToggleElement.classList.add("ease-display");
+  setTimeout(() => {
+    navToggleElement.classList.remove("ease-display");
+    navToggleElement.classList.remove("fa-bars");
+    navToggleElement.classList.add("fa-times");
+    navToggleElement.classList.remove("fa-spin");
+  }, [500]);
+};
+
+const transitionToBarsIcon = () => {
+  navToggleElement.classList.add("fa-counter-spin");
+  navToggleElement.classList.add("ease-display");
+  setTimeout(() => {
+    navToggleElement.classList.remove("ease-display");
+    navToggleElement.classList.remove("fa-times");
+    navToggleElement.classList.add("fa-bars");
+    navToggleElement.classList.remove("fa-counter-spin");
+  }, [500]);
+};
+
+let toggle = true;
+navToggle.addEventListener("click", () => {
+  if (toggle) {
+    toggle = !toggle;
+    // navToggleElement.classList.remove("fa-bars");
+    // navToggleElement.classList.add("fa-times");
+    transitionToXIcon();
+  } else {
+    toggle = !toggle;
+    // navToggleElement.classList.remove("fa-times");
+    // navToggleElement.classList.add("fa-bars");
+    transitionToBarsIcon();
+  }
 });
