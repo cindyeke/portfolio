@@ -1,53 +1,71 @@
-.nav {
-  &__toggleicon {
-    cursor: pointer;
-    transition: opacity 1s;
+@media screen and (min-width: 1008px) {
+  .nav {
+    position: absolute;
 
-    &.ease-display {
-      opacity: 0;
+    &__toggle {
+      &.expand {
+        top: 150px;
+      }
+    }
+
+    &__toggleicon {
+      cursor: pointer;
+      transition: opacity 1s;
+
+      &.ease-display {
+        opacity: 0;
+      }
+    }
+
+    &__item--toggle {
+      transition: opacity 1s;
+
+      &.open {
+        opacity: 0;
+      }
     }
   }
-}
 
-.fa-counter-spin {
-  -webkit-animation: spin-counter 2s infinite linear;
-  -moz-animation: spin-counter 2s infinite linear;
-  -o-animation: spin-counter 2s infinite linear;
-  animation: spin-counter 2s infinite linear;
-}
+  .fa-counter-spin {
+    -webkit-animation: spin-counter 2s infinite linear;
+    -moz-animation: spin-counter 2s infinite linear;
+    -o-animation: spin-counter 2s infinite linear;
+    animation: spin-counter 2s infinite linear;
+  }
 
-@keyframes spin-counter {
-  0% {
-    transform: rotate(359deg);
+  @keyframes spin-counter {
+    0% {
+      transform: rotate(359deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
   }
-  100% {
-    transform: rotate(0deg);
-  }
-}
 
-@-webkit-keyframes spin-counter {
-  0% {
-    -webkit-transform: rotate(359deg);
+  @-webkit-keyframes spin-counter {
+    0% {
+      -webkit-transform: rotate(359deg);
+    }
+    100% {
+      -webkit-transform: rotate(0deg);
+    }
   }
-  100% {
-    -webkit-transform: rotate(0deg);
-  }
-}
 
-@-moz-keyframes spin-counter {
-  0% {
-    -moz-transform: rotate(359deg);
+  @-moz-keyframes spin-counter {
+    0% {
+      -moz-transform: rotate(359deg);
+    }
+    100% {
+      -moz-transform: rotate(0deg);
+    }
   }
-  100% {
-    -moz-transform: rotate(0deg);
-  }
-}
 
-@-o-keyframes spin-counter {
-  0% {
-    -o-transform: rotate(359deg);
-  }
-  100% {
-    -o-transform: rotate(0deg);
+  @-o-keyframes spin-counter {
+    0% {
+      -o-transform: rotate(359deg);
+    }
+    100% {
+      -o-transform: rotate(0deg);
+    }
   }
 }
