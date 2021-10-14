@@ -1,4 +1,3 @@
-// Create Nav Items for small and large devices
 const navList = document.querySelector("[data-nav-list]");
 const navToggle = document.querySelector("[data-nav-toggle]");
 const navToggleElement = document.querySelector(".fa");
@@ -31,19 +30,23 @@ const createNavItems = () => {
   thirdNavLink.appendChild(thirdNavListItemText);
   thirdNavListItem.appendChild(thirdNavLink);
 
-  navList.insertBefore(secondNavListItem, navList.children[1]);
-  navList.insertBefore(thirdNavListItem, navList.children[2]);
-
-  return [secondNavListItem, thirdNavListItem];
+  return [secondNavListItem, secondNavLink, thirdNavListItem, thirdNavLink];
 };
 
-// Display all nav items only on small screens
+export let navListItemsArray = createNavItems();
+
+const insertNavItemsToNavigationList = (navItemsArray) => {
+  navList.insertBefore(navItemsArray[0], navList.children[1]);
+  navList.insertBefore(navItemsArray[2], navList.children[2]);
+};
+
+// Display Nav toggle icon only large screens
 if (screen.width < 1008) {
   navToggle.style.display = "none";
-  createNavItems();
 }
 
-const requestNavDisplayAnimation = (navListItemsArray) => {
+// Display Nav Items with Animation functionality
+const requestDisplayNavAnimation = (navListItemsArray) => {
   navList.classList.add("expand");
 
   setTimeout(() => {
@@ -55,12 +58,12 @@ const requestNavDisplayAnimation = (navListItemsArray) => {
   }, [1000]);
 
   setTimeout(() => {
-    navListItemsArray[1].classList.remove("open");
+    navListItemsArray[2].classList.remove("open");
   }, [1500]);
 };
 
-// Remove Nav Items
-const removeNavItems = () => {
+// Remove Nav Items with Animation functionality
+const requestRemoveNavAnimation = () => {
   setTimeout(() => {
     navList.children[2].classList.add("open");
   }, [200]);
@@ -78,11 +81,12 @@ const removeNavItems = () => {
   }, [2500]);
 
   setTimeout(() => {
-    navList.removeChild(navigationList.children[0]);
-    navList.removeChild(navigationList.children[0]);
+    navList.removeChild(navList.children[1]);
+    navList.removeChild(navList.children[1]);
   }, [3000]);
 };
 
+// Transition to FontAwesome X Icon
 const transitionToXIcon = () => {
   navToggleElement.classList.add("fa-spin");
   navToggleElement.classList.add("ease-display");
@@ -94,6 +98,7 @@ const transitionToXIcon = () => {
   }, [500]);
 };
 
+// Transition to FontAwesome Bars Icon
 const transitionToBarsIcon = () => {
   navToggleElement.classList.add("fa-counter-spin");
   navToggleElement.classList.add("ease-display");
@@ -105,16 +110,17 @@ const transitionToBarsIcon = () => {
   }, [500]);
 };
 
+// Nav Dropdown Functionality
 let toggleState = true;
 navToggle.addEventListener("click", () => {
   if (toggleState) {
     transitionToXIcon();
-    let navListItemsArray = createNavItems();
-    requestNavDisplayAnimation(navListItemsArray);
+    insertNavItemsToNavigationList(navListItemsArray);
+    requestDisplayNavAnimation(navListItemsArray);
     toggleState = !toggleState;
   } else {
     transitionToBarsIcon();
-    removeNavItems();
+    requestRemoveNavAnimation();
     toggleState = !toggleState;
   }
 });

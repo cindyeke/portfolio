@@ -1,25 +1,21 @@
-// Activate Navigation Links
+import { navListItemsArray } from "./navigation";
 
-const body = document.getElementsByTagName("BODY")[0];
-body.style.overflow = "hidden";
+// Activate Navigation Links
 
 const HOME = "home";
 const PROJECTS = "projects";
 
-const navItem = document.querySelectorAll("[data-nav-item]");
-const navLink = document.querySelectorAll(".nav__link");
-
 const customizeActiveNav = (navigation) => {
   if (navigation === "home") {
-    navItem[0].classList.add("selected");
-    navItem[1].classList.remove("selected");
-    navLink[0].classList.add("selected");
-    navLink[1].classList.remove("selected");
+    navListItemsArray[0].classList.add("selected"); // first nav item class added
+    navListItemsArray[1].classList.add("selected"); // first nav link class added
+    navListItemsArray[2].classList.remove("selected"); // second nav item class removed
+    navListItemsArray[3].classList.remove("selected"); // second nav link class removed
   } else {
-    navItem[1].classList.add("selected");
-    navItem[0].classList.remove("selected");
-    navLink[1].classList.add("selected");
-    navLink[0].classList.remove("selected");
+    navListItemsArray[0].classList.remove("selected"); // first nav item class removed
+    navListItemsArray[1].classList.remove("selected"); // first nav link class removed
+    navListItemsArray[2].classList.add("selected"); // second nav item class added
+    navListItemsArray[3].classList.add("selected"); // second nav link class added
   }
 };
 
@@ -29,8 +25,7 @@ const getUrlHashToCustomizeNav = () => {
   !hash ? customizeActiveNav(HOME) : customizeActiveNav(PROJECTS);
 };
 
-navItem[0].classList.add("selected");
-navLink[0].classList.add("selected");
+navListItemsArray[0].classList.add("selected");
 
 getUrlHashToCustomizeNav();
 
