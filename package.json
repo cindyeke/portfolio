@@ -1,12 +1,13 @@
 {
-  "name": "my-portfolio",
+  "name": "cindyeke-portfolio",
   "private": true,
+  "description": "A portfolio website showcasing projects",
   "scripts": {
     "start": "webpack serve --open",
     "build": "cross-env NODE_ENV=production webpack"
   },
   "keywords": [],
-  "author": "",
+  "author": "Cindy Eke",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.15.0",
@@ -14,7 +15,6 @@
     "babel-loader": "^8.2.2",
     "cross-env": "^7.0.3",
     "css-loader": "^6.2.0",
-    "file-loader": "^6.2.0",
     "html-loader": "^2.1.2",
     "html-webpack-plugin": "^5.3.2",
     "mini-css-extract-plugin": "^2.2.0",

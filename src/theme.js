@@ -8,10 +8,6 @@ if (themeSwitch) {
   themeSwitch.checked = true;
 
   themeSwitch.addEventListener("change", (e) => {
-    if (e.currentTarget.checked == true) {
-      setTheme("bright");
-    } else {
-      setTheme("warm");
-    }
+    e.currentTarget.checked == true ? setTheme("bright") : setTheme("warm");
   });
 }
