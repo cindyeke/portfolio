@@ -46,6 +46,12 @@ module.exports = {
         test: /\.(ico|png)$/,
         type: "asset",
       },
+      {
+        test: /\.pdf$/,
+        use: {
+          loader: "url-loader",
+        },
+      },
     ],
   },
 

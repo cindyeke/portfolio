@@ -43,6 +43,7 @@ const insertNavItemsToNavigationList = (navItemsArray) => {
 // Display Nav toggle icon only large screens
 if (screen.width < 1008) {
   navToggle.style.display = "none";
+  insertNavItemsToNavigationList(navListItemsArray);
 }
 
 // Display Nav Items with Animation functionality
