@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkcindyeke_portfolio=self.webpackChunkcindyeke_portfolio||[]).push([[354],{354:(e,t,c)=>{c.r(t);var n=document.querySelector("[data-nav-theme-toggle]"),r=function(e){return document.documentElement.className=e};n&&(n.checked=!0,n.addEventListener("change",(function(e){1==e.currentTarget.checked?r("bright"):r("warm")})))}}]);
