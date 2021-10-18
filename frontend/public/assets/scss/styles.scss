@@ -1,0 +1,688 @@
+@use "variables";
+@use "global";
+@use "navdropdown";
+
+html {
+  scroll-behavior: smooth;
+}
+
+.nav {
+  background-color: var(--nav-container-color);
+  height: variables.$nav-height;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 0 2rem;
+  box-shadow: 0px 20px 60px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+
+  &__list {
+    list-style: none;
+    height: 100%;
+    @include variables.flexStyle(row, center);
+    justify-content: space-between;
+  }
+
+  &__item {
+    display: inline;
+
+    &.selected {
+      animation-name: wiggle;
+      animation-duration: 1000ms;
+      animation-iteration-count: 1;
+      animation-timing-function: ease;
+    }
+  }
+
+  @keyframes wiggle {
+    0% {
+      transform: rotate(3deg);
+    }
+    25% {
+      transform: rotate(-3deg);
+    }
+  }
+
+  &__link {
+    color: var(--secondary-color);
+    letter-spacing: 1px;
+    font-weight: 550;
+    text-decoration: none;
+    transition: color 1s ease;
+
+    &.selected {
+      color: var(--nav-active-color);
+    }
+  }
+
+  &__item:nth-child(1),
+  &__item:nth-child(2),
+  &__item:nth-child(3) {
+    font-size: 1.1rem;
+  }
+
+  &__theme-toggle {
+    display: none;
+  }
+
+  &__toggle {
+    display: inline-block;
+    height: 15px;
+    width: 40px;
+    position: relative;
+    font-size: 12px;
+    top: 2px;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    background-color: var(--toggle-color);
+  }
+
+  &__toggle::before {
+    position: absolute;
+    top: 3.5px;
+    height: 8px;
+    width: 8px;
+    content: "";
+    transition: all 0.3s ease;
+    z-index: 3;
+    border-radius: 50%;
+  }
+
+  &__toggle::after {
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__theme-toggle:not(:checked) + label::after {
+    content: attr(data-unchecked);
+    right: 4px;
+    left: auto;
+    opacity: 1;
+    color: var(--primary-color);
+    font-family: "FontAwesome";
+  }
+
+  &__theme-toggle:not(:checked) + label::before {
+    left: 4px;
+    background-color: var(--theme-switch-color);
+  }
+
+  &__theme-toggle:checked + label {
+    text-align: left;
+  }
+
+  &__theme-toggle:checked + label::after {
+    content: attr(data-checked);
+    left: 4px;
+    right: auto;
+    opacity: 1;
+    color: var(--primary-color);
+    font-family: "FontAwesome";
+  }
+
+  &__theme-toggle:checked + label::before {
+    left: 27px;
+    background-color: var(--theme-switch-color);
+  }
+}
+
+.main {
+  background-image: url(../img/main-background.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  @include variables.flexStyle(row, flex-start);
+
+  &__layer {
+    width: 100%;
+    height: 100%;
+    background-color: var(--layer);
+  }
+
+  &__container {
+    height: variables.$main-height;
+    @include variables.flexStyle(row, center);
+    padding: 0 2rem;
+  }
+
+  &__heading {
+    color: var(--secondary-color);
+    border: 2px solid var(--main-container-color);
+    padding: 0.5rem;
+    height: 80%;
+
+    &-border {
+      background-color: var(--main-container-color);
+      height: 100%;
+      @include variables.flexStyle(column, flex-start);
+      padding: 0 2rem;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+  }
+
+  &__first {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+
+  &__resume {
+    font-size: 1.1rem;
+
+    &-link {
+      text-decoration: none;
+      color: var(--accent-color);
+    }
+  }
+
+  &__contacts {
+    display: flex;
+    list-style: none;
+
+    &-item {
+      margin-right: 1rem;
+    }
+
+    &-link {
+      color: var(--accent-color);
+    }
+
+    &-icon {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.projects {
+  background-color: var(--primary-color);
+  height: 100vh;
+  padding: 0 2rem;
+  letter-spacing: 1px;
+  overflow: hidden;
+
+  &__container {
+    height: variables.$main-height;
+    padding: 2rem 0;
+  }
+
+  &__heading {
+    height: 15%;
+
+    &-title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: var(--secondary-color);
+    }
+
+    &-description {
+      font-size: 1rem;
+      color: var(--theme-switch-color);
+    }
+  }
+
+  &__list {
+    height: 80%;
+    overflow: scroll;
+    overflow-x: hidden;
+    margin-top: 2rem;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--toggle-color);
+      border-radius: 10px;
+    }
+  }
+
+  &__category {
+    margin-bottom: 1.5rem;
+
+    &-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: var(--secondary-color);
+    }
+
+    &-list {
+      display: flex;
+      overflow: hidden;
+      transition: all 0.2s;
+      transform: scale(0.98);
+
+      &.active {
+        cursor: grabbing;
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+.project {
+  min-width: 85%;
+  max-width: 85%;
+  margin-left: 2rem;
+  padding: 1rem 1.5rem;
+  min-height: 200px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  background: var(--project-container-color);
+  border-radius: 5px;
+
+  &:nth-child(1) {
+    margin-left: 0.2rem;
+  }
+
+  &__description {
+    margin: 0.5rem 0;
+    height: 60%;
+    font-size: 1rem;
+  }
+
+  &__btn {
+    padding: 0.3rem;
+    letter-spacing: 1px;
+    font-size: 1rem;
+    background: transparent;
+    border: 1px solid var(--white-color);
+    color: var(--white-color);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  &__btn:hover {
+    background: var(--white-color);
+    color: var(--nav-active-color);
+  }
+}
+
+// iPhone 5 and below height media query
+@media screen and (max-height: 568px) {
+  .nav {
+    &__item:nth-child(1),
+    &__item:nth-child(2),
+    &__item:nth-child(3) {
+      font-size: 1rem;
+    }
+  }
+
+  .main {
+    &__container {
+      padding: 0 1rem;
+    }
+
+    &__heading {
+      &-border {
+        padding: 1rem 1rem;
+        font-size: 1rem;
+      }
+    }
+
+    &__first {
+      font-size: 1.6rem;
+    }
+
+    &__resume {
+      font-size: 1rem;
+    }
+  }
+
+  .projects {
+    &__heading {
+      &-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        color: var(--secondary-color);
+      }
+
+      &-description {
+        font-size: 0.9rem;
+      }
+    }
+
+    &__category {
+      &-title {
+        font-size: 1.05rem;
+      }
+    }
+  }
+
+  .project {
+    &__title {
+      font-size: 0.9rem;
+    }
+
+    &__description {
+      font-size: 0.9rem;
+    }
+
+    &__btn {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+// iPhone X height media query
+@media screen and (max-height: 812px) {
+  .nav {
+    &__item:nth-child(1),
+    &__item:nth-child(2),
+    &__item:nth-child(3) {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+// Width of 300 and below media query (galaxy fold)
+@media screen and (max-width: 300px) {
+  .nav {
+    &__item:nth-child(1),
+    &__item:nth-child(2),
+    &__item:nth-child(3) {
+      font-size: 1rem;
+    }
+  }
+
+  .main {
+    &__container {
+      padding: 0 1rem;
+    }
+
+    &__heading {
+      &-border {
+        padding: 1rem 1rem;
+        font-size: 1rem;
+      }
+    }
+
+    &__first {
+      font-size: 1.6rem;
+    }
+
+    &__resume {
+      font-size: 1rem;
+    }
+  }
+
+  .projects {
+    &__heading {
+      &-title {
+        font-size: 1.3rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        color: var(--secondary-color);
+      }
+
+      &-description {
+        font-size: 0.8rem;
+      }
+    }
+
+    &__category {
+      &-title {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .project {
+    &__title {
+      font-size: 0.8rem;
+    }
+
+    &__description {
+      font-size: 0.8rem;
+    }
+
+    &__btn {
+      font-size: 0.7rem;
+    }
+  }
+}
+
+// Tablet, iPad Portrait View media query
+@media screen and (min-width: 768px) and (max-width: 1007px) {
+  .nav {
+    padding: 0 3rem;
+
+    &__item:nth-child(1),
+    &__item:nth-child(2),
+    &__item:nth-child(3) {
+      font-size: 1.7rem;
+    }
+
+    &__toggle {
+      height: 24px;
+      width: 63px;
+    }
+
+    &__toggle::before {
+      top: 4.5px;
+      height: 14px;
+      width: 14px;
+    }
+
+    &__theme-toggle:not(:checked) + label::after {
+      font-size: 1.1rem;
+    }
+
+    &__theme-toggle:checked + label::after {
+      font-size: 1.1rem;
+    }
+
+    &__theme-toggle:checked + label::before {
+      left: 42px;
+    }
+  }
+
+  .main {
+    &__heading {
+      &-border {
+        font-size: 1.7rem;
+      }
+    }
+
+    &__first {
+      font-size: 2.7rem;
+    }
+
+    &__resume {
+      font-size: 1.7rem;
+    }
+
+    &__contacts {
+      &-icon {
+        font-size: 2.6rem;
+      }
+    }
+  }
+
+  .projects {
+    &__heading {
+      height: 10%;
+
+      &-title {
+        font-size: 2.3rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        color: var(--secondary-color);
+      }
+
+      &-description {
+        font-size: 1.3rem;
+      }
+    }
+
+    &__category {
+      &-title {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .project {
+    &__title,
+    &__description {
+      font-size: 1.3rem;
+    }
+
+    &__btn {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+// Tablet Landscape & PC View media query
+@media screen and (min-width: 1008px) {
+  .nav {
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 10vw;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__list {
+      position: absolute;
+      display: block;
+      height: 100px;
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      transition: height 1s;
+
+      &.expand {
+        height: 200px;
+      }
+    }
+
+    &__item:not(:nth-child(1)) {
+      margin: 1rem;
+    }
+
+    &__toggleicon {
+      color: var(--secondary-color);
+      font-size: 1.8rem;
+    }
+
+    &__toggle {
+      position: absolute;
+      left: 0;
+      top: 60px;
+      transition: top 1200ms ease-in;
+    }
+
+    &__toggle::before {
+      height: 8px;
+      width: 8px;
+      top: 3.5px;
+    }
+
+    &__theme-toggle:checked + label::before {
+      left: 27px;
+    }
+  }
+
+  .main {
+    &__container {
+      height: 100%;
+      justify-content: flex-start;
+      padding: 0 2rem;
+    }
+
+    &__heading {
+      padding: 0.5rem;
+      height: 50%;
+      width: 70%;
+
+      &-border {
+        background-color: var(--main-container-color);
+        height: 100%;
+        @include variables.flexStyle(column, flex-start);
+        padding: 0 2rem;
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+      }
+    }
+
+    &__first {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    &__resume {
+      font-size: 1.1rem;
+
+      &-link {
+        text-decoration: none;
+        color: var(--accent-color);
+      }
+    }
+
+    &__contacts {
+      display: flex;
+      list-style: none;
+
+      &-item {
+        margin-right: 1rem;
+      }
+
+      &-link {
+        color: var(--accent-color);
+      }
+
+      &-icon {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .projects {
+    &__list {
+      width: 85vw;
+    }
+  }
+
+  .project {
+    min-width: 50%;
+    max-width: 50%;
+  }
+}
+
+@media screen and (min-height: 980px) {
+  .nav {
+    &__toggle {
+      width: 45px;
+      height: 18px;
+
+      &::before {
+        height: 10px;
+        width: 10px;
+        top: 3.5px;
+      }
+    }
+
+    &__theme-toggle:checked + label::before {
+      left: 29px;
+    }
+
+    &__theme-toggle:checked + label::after,
+    &__theme-toggle:not(:checked) + label::after {
+      top: 8.5px;
+    }
+  }
+}
