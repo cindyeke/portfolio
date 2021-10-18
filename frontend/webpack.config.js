@@ -10,7 +10,6 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "build"),
     filename: "js/[name].[contenthash].bundle.js",
-    chunkFilename: "js/[name].[contenthash].bundle.js",
     assetModuleFilename: "img/[hash][ext][query]",
   },
 

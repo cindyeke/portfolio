@@ -237,7 +237,8 @@ html {
     &::-webkit-scrollbar {
       width: 5px;
     }
-    s &::-webkit-scrollbar-thumb {
+
+    &::-webkit-scrollbar-thumb {
       background: var(--toggle-color);
       border-radius: 10px;
     }
