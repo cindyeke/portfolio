@@ -2,6 +2,7 @@ const path = require("path");
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const pages = ["index", "login", "dashboard"];
 
 let mode = process.env.NODE_ENV === "production" ? "production" : "development";
 
@@ -58,8 +59,13 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "css/[name].css",
     }),
-    new HtmlWebpackPlugin({
-      template: "./public/index.html",
-    }),
-  ],
+  ].concat(
+    pages.map(
+      (page) =>
+        new HtmlWebpackPlugin({
+          template: `./public/${page}.html`,
+          filename: `${page}.html`,
+        })
+    )
+  ),
 };
