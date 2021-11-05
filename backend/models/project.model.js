@@ -36,6 +36,21 @@ class Project {
     });
   };
 
+  static getAll = (result) => {
+    let sqlStatement = "SELECT * FROM projects";
+
+    sqlConnection.query(sqlStatement, (err, res) => {
+      if (err) {
+        console.log("SQL Error: ", err);
+        result(err, null);
+        return;
+      }
+
+      console.log("Projects: ", res);
+      result(null, res);
+    });
+  };
+
   static read = (categoryId, result) => {
     let sqlStatement = "SELECT * FROM projects WHERE category=?";
 

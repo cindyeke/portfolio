@@ -90,6 +90,11 @@ exports.update = (req, res) => {
     return;
   }
 
+  if (!req.body.id) {
+    responseHandlers.error(res, null, "Request body id not be empty");
+    return;
+  }
+
   let category = new Category(req.body);
 
   category.update(req.body, (err, data) => {

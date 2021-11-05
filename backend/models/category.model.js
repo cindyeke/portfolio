@@ -27,7 +27,7 @@ class Category {
     sqlConnection.query(sqlStatement, parseInt(categoryId), (err, res) => {
       if (err) {
         console.log("SQL Error: ", err);
-        result(null, err);
+        result(err, null);
         return;
       }
 

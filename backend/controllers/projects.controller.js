@@ -35,11 +35,27 @@ exports.create = (req, res) => {
 };
 
 exports.getAll = (req, res) => {
+  console.log(`Initializing request to get all projects`);
+
+  Project.getAll((err, data) => {
+    if (err) {
+      responseHandlers.error(
+        res,
+        500,
+        `Error occurred while fetching projects`
+      );
+    } else {
+      responseHandlers.success(res, 200, "Success", data);
+    }
+  });
+};
+
+exports.getAllById = (req, res) => {
   console.log(
-    `Initializing request to get projects under category ${req.query.categoryid}`
+    `Initializing request to get projects under category ${req.params.categoryid}`
   );
 
-  let categoryId = req.query.categoryid;
+  let categoryId = req.params.categoryid;
 
   // validate request
   if (!categoryId) {

@@ -8,6 +8,11 @@ let mode = process.env.NODE_ENV === "production" ? "production" : "development";
 
 module.exports = {
   mode,
+  entry: {
+    index: "./src/index.js",
+    login: "./src/login.js",
+    dashboard: "./src/dashboard.js",
+  },
   output: {
     path: path.resolve(__dirname, "build"),
     filename: "js/[name].[contenthash].bundle.js",
@@ -65,6 +70,7 @@ module.exports = {
         new HtmlWebpackPlugin({
           template: `./public/${page}.html`,
           filename: `${page}.html`,
+          chunks: page === "index" ? ["index"] : [`${page}`],
         })
     )
   ),

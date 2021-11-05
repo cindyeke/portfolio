@@ -5,10 +5,198 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Page</title>
+    <title>Cindy Eke | Dashboard</title>
+
+    <script src="https://use.fontawesome.com/3b978efc20.js"></script>
 </head>
 
 <body>
+    <section class="dashboard">
+        <article class="welcome">
+            <h1 class="welcome__text">Dashboard</h1>
+            <div class="welcome__summary">
+                <div class="welcome__detail">
+                    <span class="welcome__detail--number" data-dashboard-project-no></span>
+                    <h2 class="welcome__detail--type">Projects</h2>
+                </div>
+                <div class="welcome__detail">
+                    <span class="welcome__detail--number" data-dashboard-category-no></span>
+                    <h2 class="welcome__detail--type">Project Categories</h2>
+                </div>
+            </div>
+        </article>
+        <article class="settings">
+            <a href="#mainsettings" class="settings__link">
+                <div class="settings__group">main</div>
+            </a>
+            <a href="#categorysettings" class="settings__link">
+                <div class="settings__group">category</div>
+            </a>
+            <a href="#projectsettings" class="settings__link">
+                <div class="settings__group">project</div>
+            </a>
+        </article>
+    </section>
+
+
+
+    <section id="mainsettings" class="main">
+        <h3 class="main__title">Main Page Setting</h3>
+        <div>
+            <label for="base" class="main__heading">Heading: </label>
+            <textarea name="" id="base"
+                class="main__textarea">I am a software engineer based in Lagos, Nigeria.</textarea>
+            <button class="main__btn">update</button>
+            <button class="main__btn">submit</button>
+        </div>
+        <div>
+            <label for="base" class="main__heading">Description: </label>
+            <textarea name="" id=""
+                class="main__textarea">I build mobile, web and desktop applications and currently, I am focused on taking my frontend skills to the next level.</textarea>
+            <button class="main__btn">update</button>
+            <button class="main__btn">submit</button>
+        </div>
+
+        <div class="back"><a href="#" class="back__link">back to dashboard</a></div>
+    </section>
+
+    <section id="categorysettings" class="category">
+        <h3 class="category__title">Category Settings</h3>
+        <div class="category__group" data-category>
+            <div class="category__group--title">
+                <span class="category__content" data-category-title>add new category</span>
+                <span class="category__content--position"><i class="fa fa-chevron-down category__icon"></i></span>
+            </div>
+            <div class="category__group--details">
+                <input type="text" placeholder="NEW CATEGORY" class="category__input" data-add-category>
+                <input type="submit" value="SUBMIT" class="category__input--btn" data-add-category-btn>
+                <p class="category__input--message" data-add-category-message></p>
+            </div>
+        </div>
+        <div class="category__group" data-category>
+            <div class="category__group--title">
+                <span class="category__content" data-category-title>update category</span>
+                <span class="category__content--position"><i class="fa fa-chevron-down category__icon"></i></span>
+            </div>
+            <div class="category__group--details">
+                <div class="category__select" data-update-category-radio-group>
+                </div>
+
+                <input type="text" placeholder="CATEGORY TO BE UPDATED" class="category__input"
+                    data-update-category-input>
+                <input type="submit" value="SUBMIT" class="category__input--btn" data-update-category-btn>
+                <p class="category__input--message" data-update-category-message></p>
+            </div>
+        </div>
+        <div class="category__group" data-category>
+            <div class="category__group--title">
+                <span class="category__content" data-category-title>delete category</span>
+                <span class="category__content--position"><i class="fa fa-chevron-down category__icon"></i></span>
+            </div>
+
+            <div class="category__group--details">
+                <div class="category__select" data-delete-category-radio-group>
+                </div>
+
+                <input type="text" placeholder="CATEGORY TO BE DELETED" class="category__input"
+                    data-delete-category-input>
+                <input type="submit" value="SUBMIT" class="category__input--btn" data-delete-category-btn>
+                <p class="category__input--message" data-delete-category-message></p>
+            </div>
+        </div>
+        <div class="back"><a href="#" class="back__link">back to dashboard</a></div>
+    </section>
+
+    <section id="projectsettings" class="project">
+        <h3 class="project__title">Project Settings</h3>
+        <div class="project__group" data-add-project>
+            <span class="project__group--title">add new project</span>
+        </div>
+        <div class="project__group dropdown" data-project-group>
+            <div class="project__group--heading">
+                <span class="project__group--title">update project</span>
+                <i class="fa fa-chevron-down category__icon"></i>
+            </div>
+            <div class="project__group--radiogroup" data-updateproject-radio-group>
+                <!-- <div class="project__group--radio">
+                    <input type="radio" id="htm" name="update" value="HTML">
+                    <label for="htm">HTML</label><br>
+                </div>
+                <div class="project__group--radio">
+                    <input type="radio" id="hole" name="update" value="HOLE">
+                    <label for="hole">HOLE</label><br>
+                </div> -->
+            </div>
+        </div>
+        <div class="project__group dropdown" data-project-group>
+            <div class="project__group--heading">
+                <span class="project__group--title">delete project</span>
+                <i class="fa fa-chevron-down category__icon"></i>
+            </div>
+            <div class="project__group--radiogroup" data-deleteproject-radio-group>
+                <!-- <div class="project__group--radio">
+                    <input type="radio" id="fox" name="delete" value="Henry Club">
+                    <label for="fox">Henry Club</label><br>
+                </div>
+                <div class="project__group--radio">
+                    <input type="radio" id="tiger" name="delete" value="The Sophie Club">
+                    <label for="tiger">The Sophie Club</label><br>
+                </div> -->
+
+            </div>
+        </div>
+        <div class="back"><a href="#" class="back__link">back to dashboard</a></div>
+    </section>
+
+    <div class="modal" data-modal>
+        <div class="modal__container" data-modal-container>
+            <div class="modal__heading">
+                <i class="fa fa-times fa-2x" data-modal-icon></i>
+            </div>
+            <div class="modal__content" data-modal-content>
+                <div class="modal__content--switch" data-modal-content-group>
+                    <form action="" class="modal__form" data-add-project-form>
+                        <input type="text" name="" id="" class="modal__input" placeholder="PROJECT NAME">
+                        <textarea name="" id="" class="modal__input modal__textarea"
+                            placeholder="DESCRIPTION"></textarea>
+                        <input type="text" name="" id="" class="modal__input" placeholder="GITHUB REPO">
+                        <input type="text" name="" id="" class="modal__input" placeholder="WEBSITE URL">
+
+                        <div class="modal__radio" data-add-project-radio-group>
+                        </div>
+
+                        <input type="submit" value="SUBMIT" class="modal__input modal__btn">
+                        <p class="category__input--message" data-add-project-message></p>
+                    </form>
+                </div>
+
+                <div class="modal__content--switch" data-modal-content-group>
+                    <form action="" class="modal__form" data-updateproject-form>
+                        <input type="text" name="" id="" class="modal__input" placeholder="UPDATED PROJECT NAME"
+                            data-update-project-name disabled="true">
+                        <textarea name="" id="" class="modal__input modal__textarea"
+                            placeholder="DESCRIPTION"></textarea>
+                        <input type="text" name="" id="" class="modal__input" placeholder="GITHUB REPO">
+                        <input type="text" name="" id="" class="modal__input" placeholder="WEBSITE URL">
+
+                        <input type=text name="" id="" data-selected-project-category>
+
+                        <input type="submit" value="SUBMIT" class="modal__input modal__btn">
+                        <p class="category__input--message" data-update-project-message></p>
+                    </form>
+                </div>
+
+                <div class="modal__content--switch" data-modal-content-group>
+                    <form action="" class="modal__form">
+                        <p data-delete-project-info></p>
+                        <input type="submit" value="YES" class="modal__input modal__btn" data-delete-project-btn>
+                        <p class="category__input--message" data-delete-project-message></p>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 </body>
 

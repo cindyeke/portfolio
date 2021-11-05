@@ -1,7 +1,3 @@
-// $dark-shadow: #000;
-// $nav-height: 15vh;
-// $main-height: calc(100vh - #{$nav-height});
-
 @mixin flexStyle($flexDirection, $alignProperty: null) {
   display: flex;
   justify-content: center;

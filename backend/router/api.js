@@ -6,6 +6,7 @@ const categoryController = require("../controllers/categories.controller");
 
 router.get("/categories", categoryController.getAll);
 router.get("/projects", projectController.getAll);
+router.get("/projects/:categoryid", projectController.getAllById);
 
 router.post("/categories", categoryController.create);
 router.post("/projects", projectController.create);
