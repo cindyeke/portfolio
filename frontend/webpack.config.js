@@ -10,8 +10,8 @@ module.exports = {
   mode,
   entry: {
     index: "./src/index.js",
-    login: "./src/login.js",
-    dashboard: "./src/dashboard.js",
+    // login: "./src/login.js",
+    // dashboard: "./src/dashboard.js",
   },
   output: {
     path: path.resolve(__dirname, "build"),
